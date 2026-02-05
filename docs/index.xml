@@ -6,18 +6,16 @@
       version="2.0">
 <channel>
 <title>0^0</title>
-<link>https://your-website-url.example.com/</link>
+<link>https://your-website-url.example.com/index.html</link>
 <atom:link href="https://your-website-url.example.com/index.xml" rel="self" type="application/rss+xml"/>
 <description>A blog built with Quarto</description>
-<generator>quarto-1.8.25</generator>
+<generator>quarto-1.3.450</generator>
 <lastBuildDate>Mon, 22 Dec 2025 16:00:00 GMT</lastBuildDate>
 <item>
   <title>Poker Lesson 7 - 比大小遊戲 (完整版)</title>
   <dc:creator>Tai-Ning Liao</dc:creator>
   <link>https://your-website-url.example.com/posts/poker/lesson_7_comparison_full.html</link>
   <description><![CDATA[ 
-
-
 
 
 
@@ -42,138 +40,88 @@
 <li>若 Player A 選擇 <strong>下注 (Bet)</strong>，則輪到 Player B 行動，B 可以選擇 <strong>跟注 (Call)</strong> 或 <strong>棄牌 (Fold)</strong>。</li>
 </ul></li>
 </ul>
-<div class="cell" data-layout-align="center">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-full-game-tree" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-full-game-tree-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="fig-full-game-tree" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
 <div>
 <svg width="672" height="480" viewbox="0.00 0.00 733.49 327.80" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 323.8)">
-<title>GT_Advanced</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-323.8 729.49,-323.8 729.49,4 -4,4"></polygon>
-<!-- A1 -->
-<g id="node1" class="node">
-<title>A1</title>
-<ellipse fill="white" stroke="#15c043" stroke-width="2" cx="44.81" cy="-168" rx="44.63" ry="44.63"></ellipse>
-<text text-anchor="middle" x="44.81" y="-163.8" font-family="Helvetica, Arial, sans-serif" font-size="14.00">Player A</text>
-</g>
-<!-- B1 -->
-<g id="node2" class="node">
-<title>B1</title>
-<ellipse fill="white" stroke="#1565c0" stroke-width="2" cx="230.07" cy="-222" rx="44.04" ry="44.04"></ellipse>
-<text text-anchor="middle" x="230.07" y="-217.8" font-family="Helvetica, Arial, sans-serif" font-size="14.00">Player B</text>
-</g>
-<!-- A1&#45;&gt;B1 -->
-<g id="edge1" class="edge">
-<title>A1-&gt;B1</title>
-<path fill="none" stroke="black" d="M88.32,-180.52C114.99,-188.38 149.55,-198.57 177.75,-206.88"></path>
-<polygon fill="black" stroke="black" points="176.85,-210.26 187.43,-209.73 178.83,-203.55 176.85,-210.26"></polygon>
-<text text-anchor="middle" x="137.72" y="-205.3" font-family="Helvetica, Arial, sans-serif" font-size="11.00"> 下注 (Bet) </text>
-</g>
-<!-- B2 -->
-<g id="node3" class="node">
-<title>B2</title>
-<ellipse fill="white" stroke="#1565c0" stroke-width="2" cx="230.07" cy="-115" rx="44.04" ry="44.04"></ellipse>
-<text text-anchor="middle" x="230.07" y="-110.8" font-family="Helvetica, Arial, sans-serif" font-size="14.00">Player B</text>
-</g>
-<!-- A1&#45;&gt;B2 -->
-<g id="edge4" class="edge">
-<title>A1-&gt;B2</title>
-<path fill="none" stroke="black" d="M88.32,-155.71C114.99,-147.99 149.55,-138 177.75,-129.84"></path>
-<polygon fill="black" stroke="black" points="178.8,-133.18 187.43,-127.04 176.85,-126.46 178.8,-133.18"></polygon>
-<text text-anchor="middle" x="137.72" y="-152.3" font-family="Helvetica, Arial, sans-serif" font-size="11.00"> 過牌 (Check) </text>
-</g>
-<!-- Outcome_A_Bet_B_Call -->
-<g id="node5" class="node">
-<title>Outcome_A_Bet_B_Call</title>
-<path fill="#f5f5f5" stroke="black" d="M490.25,-319.6C490.25,-319.6 422.78,-319.6 422.78,-319.6 416.78,-319.6 410.78,-313.6 410.78,-307.6 410.78,-307.6 410.78,-276.4 410.78,-276.4 410.78,-270.4 416.78,-264.4 422.78,-264.4 422.78,-264.4 490.25,-264.4 490.25,-264.4 496.25,-264.4 502.25,-270.4 502.25,-276.4 502.25,-276.4 502.25,-307.6 502.25,-307.6 502.25,-313.6 496.25,-319.6 490.25,-319.6"></path>
-<text text-anchor="middle" x="456.52" y="-296.2" font-family="Helvetica, Arial, sans-serif" font-size="14.00">結局 1: 攤牌</text>
-<text text-anchor="middle" x="456.52" y="-279.4" font-family="Helvetica, Arial, sans-serif" font-size="14.00">(池底: P+2B)</text>
-</g>
-<!-- B1&#45;&gt;Outcome_A_Bet_B_Call -->
-<g id="edge2" class="edge">
-<title>B1-&gt;Outcome_A_Bet_B_Call</title>
-<path fill="none" stroke="black" d="M272.5,-234.92C308.58,-246.17 361.17,-262.57 400.72,-274.91"></path>
-<polygon fill="black" stroke="black" points="399.89,-278.32 410.48,-277.95 401.97,-271.63 399.89,-278.32"></polygon>
-<text text-anchor="middle" x="322.43" y="-262.3" font-family="Helvetica, Arial, sans-serif" font-size="11.00"> 跟注 (Call) </text>
-</g>
-<!-- Outcome_A_Bet_B_Fold -->
-<g id="node6" class="node">
-<title>Outcome_A_Bet_B_Fold</title>
-<path fill="#f5f5f5" stroke="black" d="M492.02,-245.6C492.02,-245.6 421.02,-245.6 421.02,-245.6 415.02,-245.6 409.02,-239.6 409.02,-233.6 409.02,-233.6 409.02,-202.4 409.02,-202.4 409.02,-196.4 415.02,-190.4 421.02,-190.4 421.02,-190.4 492.02,-190.4 492.02,-190.4 498.02,-190.4 504.02,-196.4 504.02,-202.4 504.02,-202.4 504.02,-233.6 504.02,-233.6 504.02,-239.6 498.02,-245.6 492.02,-245.6"></path>
-<text text-anchor="middle" x="456.52" y="-222.2" font-family="Helvetica, Arial, sans-serif" font-size="14.00">結局 2: A 獲勝</text>
-<text text-anchor="middle" x="456.52" y="-205.4" font-family="Helvetica, Arial, sans-serif" font-size="14.00">(B 棄牌)</text>
-</g>
-<!-- B1&#45;&gt;Outcome_A_Bet_B_Fold -->
-<g id="edge3" class="edge">
-<title>B1-&gt;Outcome_A_Bet_B_Fold</title>
-<path fill="none" stroke="black" d="M274.35,-221.23C309.78,-220.6 360.18,-219.7 398.83,-219.01"></path>
-<polygon fill="black" stroke="black" points="398.96,-222.51 408.89,-218.83 398.83,-215.51 398.96,-222.51"></polygon>
-<text text-anchor="middle" x="322.43" y="-223.3" font-family="Helvetica, Arial, sans-serif" font-size="11.00"> 棄牌 (Fold) </text>
-</g>
-<!-- A2 -->
-<g id="node4" class="node">
-<title>A2</title>
-<ellipse fill="white" stroke="#15c043" stroke-width="2" cx="456.52" cy="-125" rx="44.63" ry="44.63"></ellipse>
-<text text-anchor="middle" x="456.52" y="-120.8" font-family="Helvetica, Arial, sans-serif" font-size="14.00">Player A</text>
-</g>
-<!-- B2&#45;&gt;A2 -->
-<g id="edge6" class="edge">
-<title>B2-&gt;A2</title>
-<path fill="none" stroke="black" d="M274.35,-116.93C310.6,-118.54 362.52,-120.86 401.49,-122.59"></path>
-<polygon fill="black" stroke="black" points="401.46,-126.1 411.61,-123.04 401.77,-119.1 401.46,-126.1"></polygon>
-<text text-anchor="middle" x="322.43" y="-123.3" font-family="Helvetica, Arial, sans-serif" font-size="11.00"> 下注 (Bet) </text>
-</g>
-<!-- Outcome_Check_Check -->
-<g id="node7" class="node">
-<title>Outcome_Check_Check</title>
-<path fill="#f5f5f5" stroke="black" d="M530.52,-62C530.52,-62 382.52,-62 382.52,-62 376.52,-62 370.52,-56 370.52,-50 370.52,-50 370.52,-12 370.52,-12 370.52,-6 376.52,0 382.52,0 382.52,0 530.52,0 530.52,0 536.52,0 542.52,-6 542.52,-12 542.52,-12 542.52,-50 542.52,-50 542.52,-56 536.52,-62 530.52,-62"></path>
-<text text-anchor="start" x="383.22" y="-37.4" font-family="Helvetica, Arial, sans-serif" font-weight="bold" font-size="14.00">結局 5: 攤牌 (Check-Back)</text>
-<text text-anchor="start" x="438.43" y="-16.4" font-family="Helvetica, Arial, sans-serif" font-size="14.00">池底: P</text>
-</g>
-<!-- B2&#45;&gt;Outcome_Check_Check -->
-<g id="edge5" class="edge">
-<title>B2-&gt;Outcome_Check_Check</title>
-<path fill="none" stroke="black" d="M271.72,-99.79C297.13,-90.28 330.95,-77.62 362.65,-65.76"></path>
-<polygon fill="black" stroke="black" points="364.27,-68.89 372.41,-62.1 361.82,-62.33 364.27,-68.89"></polygon>
-<text text-anchor="middle" x="322.43" y="-93.3" font-family="Helvetica, Arial, sans-serif" font-size="11.00"> 過牌 (Check) </text>
-</g>
-<!-- Outcome_Check_Bet_Call -->
-<g id="node8" class="node">
-<title>Outcome_Check_Bet_Call</title>
-<path fill="#f5f5f5" stroke="black" d="M711.86,-189.6C711.86,-189.6 644.4,-189.6 644.4,-189.6 638.4,-189.6 632.4,-183.6 632.4,-177.6 632.4,-177.6 632.4,-146.4 632.4,-146.4 632.4,-140.4 638.4,-134.4 644.4,-134.4 644.4,-134.4 711.86,-134.4 711.86,-134.4 717.86,-134.4 723.86,-140.4 723.86,-146.4 723.86,-146.4 723.86,-177.6 723.86,-177.6 723.86,-183.6 717.86,-189.6 711.86,-189.6"></path>
-<text text-anchor="middle" x="678.13" y="-166.2" font-family="Helvetica, Arial, sans-serif" font-size="14.00">結局 3: 攤牌</text>
-<text text-anchor="middle" x="678.13" y="-149.4" font-family="Helvetica, Arial, sans-serif" font-size="14.00">(池底: P+2B)</text>
-</g>
-<!-- A2&#45;&gt;Outcome_Check_Bet_Call -->
-<g id="edge7" class="edge">
-<title>A2-&gt;Outcome_Check_Bet_Call</title>
-<path fill="none" stroke="black" d="M500.91,-132.31C535.64,-138.16 584.58,-146.41 622.07,-152.72"></path>
-<polygon fill="black" stroke="black" points="621.88,-156.24 632.32,-154.45 623.05,-149.34 621.88,-156.24"></polygon>
-<text text-anchor="middle" x="586.64" y="-154.3" font-family="Helvetica, Arial, sans-serif" font-size="11.00"> 跟注 (Call) </text>
-</g>
-<!-- Outcome_Check_Bet_Fold -->
-<g id="node9" class="node">
-<title>Outcome_Check_Bet_Fold</title>
-<path fill="#f5f5f5" stroke="black" d="M713.36,-115.6C713.36,-115.6 642.9,-115.6 642.9,-115.6 636.9,-115.6 630.9,-109.6 630.9,-103.6 630.9,-103.6 630.9,-72.4 630.9,-72.4 630.9,-66.4 636.9,-60.4 642.9,-60.4 642.9,-60.4 713.36,-60.4 713.36,-60.4 719.36,-60.4 725.36,-66.4 725.36,-72.4 725.36,-72.4 725.36,-103.6 725.36,-103.6 725.36,-109.6 719.36,-115.6 713.36,-115.6"></path>
-<text text-anchor="middle" x="678.13" y="-92.2" font-family="Helvetica, Arial, sans-serif" font-size="14.00">結局 4: B 獲勝</text>
-<text text-anchor="middle" x="678.13" y="-75.4" font-family="Helvetica, Arial, sans-serif" font-size="14.00">(A 棄牌)</text>
-</g>
-<!-- A2&#45;&gt;Outcome_Check_Bet_Fold -->
-<g id="edge8" class="edge">
-<title>A2-&gt;Outcome_Check_Bet_Fold</title>
-<path fill="none" stroke="black" d="M500.91,-117.69C535.18,-111.91 583.3,-103.81 620.59,-97.53"></path>
-<polygon fill="black" stroke="black" points="621.52,-100.92 630.8,-95.81 620.36,-94.02 621.52,-100.92"></polygon>
-<text text-anchor="middle" x="586.64" y="-110.3" font-family="Helvetica, Arial, sans-serif" font-size="11.00"> 棄牌 (Fold) </text>
-</g>
-</g>
+<title>
+GT_Advanced
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-323.8 729.49,-323.8 729.49,4 -4,4"></polygon> <!-- A1 --> <g id="node1" class="node">
+<title>
+A1
+</title>
+<ellipse fill="white" stroke="#15c043" stroke-width="2" cx="44.81" cy="-168" rx="44.63" ry="44.63"></ellipse> <text text-anchor="middle" x="44.81" y="-163.8" font-family="Helvetica, Arial, sans-serif" font-size="14.00">Player A</text> </g> <!-- B1 --> <g id="node2" class="node">
+<title>
+B1
+</title>
+<ellipse fill="white" stroke="#1565c0" stroke-width="2" cx="230.07" cy="-222" rx="44.04" ry="44.04"></ellipse> <text text-anchor="middle" x="230.07" y="-217.8" font-family="Helvetica, Arial, sans-serif" font-size="14.00">Player B</text> </g> <!-- A1&#45;&gt;B1 --> <g id="edge1" class="edge">
+<title>
+A1-&gt;B1
+</title>
+<path fill="none" stroke="black" d="M88.32,-180.52C114.99,-188.38 149.55,-198.57 177.75,-206.88"></path> <polygon fill="black" stroke="black" points="176.85,-210.26 187.43,-209.73 178.83,-203.55 176.85,-210.26"></polygon> <text text-anchor="middle" x="137.72" y="-205.3" font-family="Helvetica, Arial, sans-serif" font-size="11.00"> 下注 (Bet) </text> </g> <!-- B2 --> <g id="node3" class="node">
+<title>
+B2
+</title>
+<ellipse fill="white" stroke="#1565c0" stroke-width="2" cx="230.07" cy="-115" rx="44.04" ry="44.04"></ellipse> <text text-anchor="middle" x="230.07" y="-110.8" font-family="Helvetica, Arial, sans-serif" font-size="14.00">Player B</text> </g> <!-- A1&#45;&gt;B2 --> <g id="edge4" class="edge">
+<title>
+A1-&gt;B2
+</title>
+<path fill="none" stroke="black" d="M88.32,-155.71C114.99,-147.99 149.55,-138 177.75,-129.84"></path> <polygon fill="black" stroke="black" points="178.8,-133.18 187.43,-127.04 176.85,-126.46 178.8,-133.18"></polygon> <text text-anchor="middle" x="137.72" y="-152.3" font-family="Helvetica, Arial, sans-serif" font-size="11.00"> 過牌 (Check) </text> </g> <!-- Outcome_A_Bet_B_Call --> <g id="node5" class="node">
+<title>
+Outcome_A_Bet_B_Call
+</title>
+<path fill="#f5f5f5" stroke="black" d="M490.25,-319.6C490.25,-319.6 422.78,-319.6 422.78,-319.6 416.78,-319.6 410.78,-313.6 410.78,-307.6 410.78,-307.6 410.78,-276.4 410.78,-276.4 410.78,-270.4 416.78,-264.4 422.78,-264.4 422.78,-264.4 490.25,-264.4 490.25,-264.4 496.25,-264.4 502.25,-270.4 502.25,-276.4 502.25,-276.4 502.25,-307.6 502.25,-307.6 502.25,-313.6 496.25,-319.6 490.25,-319.6"></path> <text text-anchor="middle" x="456.52" y="-296.2" font-family="Helvetica, Arial, sans-serif" font-size="14.00">結局 1: 攤牌</text> <text text-anchor="middle" x="456.52" y="-279.4" font-family="Helvetica, Arial, sans-serif" font-size="14.00">(池底: P+2B)</text> </g> <!-- B1&#45;&gt;Outcome_A_Bet_B_Call --> <g id="edge2" class="edge">
+<title>
+B1-&gt;Outcome_A_Bet_B_Call
+</title>
+<path fill="none" stroke="black" d="M272.5,-234.92C308.58,-246.17 361.17,-262.57 400.72,-274.91"></path> <polygon fill="black" stroke="black" points="399.89,-278.32 410.48,-277.95 401.97,-271.63 399.89,-278.32"></polygon> <text text-anchor="middle" x="322.43" y="-262.3" font-family="Helvetica, Arial, sans-serif" font-size="11.00"> 跟注 (Call) </text> </g> <!-- Outcome_A_Bet_B_Fold --> <g id="node6" class="node">
+<title>
+Outcome_A_Bet_B_Fold
+</title>
+<path fill="#f5f5f5" stroke="black" d="M492.02,-245.6C492.02,-245.6 421.02,-245.6 421.02,-245.6 415.02,-245.6 409.02,-239.6 409.02,-233.6 409.02,-233.6 409.02,-202.4 409.02,-202.4 409.02,-196.4 415.02,-190.4 421.02,-190.4 421.02,-190.4 492.02,-190.4 492.02,-190.4 498.02,-190.4 504.02,-196.4 504.02,-202.4 504.02,-202.4 504.02,-233.6 504.02,-233.6 504.02,-239.6 498.02,-245.6 492.02,-245.6"></path> <text text-anchor="middle" x="456.52" y="-222.2" font-family="Helvetica, Arial, sans-serif" font-size="14.00">結局 2: A 獲勝</text> <text text-anchor="middle" x="456.52" y="-205.4" font-family="Helvetica, Arial, sans-serif" font-size="14.00">(B 棄牌)</text> </g> <!-- B1&#45;&gt;Outcome_A_Bet_B_Fold --> <g id="edge3" class="edge">
+<title>
+B1-&gt;Outcome_A_Bet_B_Fold
+</title>
+<path fill="none" stroke="black" d="M274.35,-221.23C309.78,-220.6 360.18,-219.7 398.83,-219.01"></path> <polygon fill="black" stroke="black" points="398.96,-222.51 408.89,-218.83 398.83,-215.51 398.96,-222.51"></polygon> <text text-anchor="middle" x="322.43" y="-223.3" font-family="Helvetica, Arial, sans-serif" font-size="11.00"> 棄牌 (Fold) </text> </g> <!-- A2 --> <g id="node4" class="node">
+<title>
+A2
+</title>
+<ellipse fill="white" stroke="#15c043" stroke-width="2" cx="456.52" cy="-125" rx="44.63" ry="44.63"></ellipse> <text text-anchor="middle" x="456.52" y="-120.8" font-family="Helvetica, Arial, sans-serif" font-size="14.00">Player A</text> </g> <!-- B2&#45;&gt;A2 --> <g id="edge6" class="edge">
+<title>
+B2-&gt;A2
+</title>
+<path fill="none" stroke="black" d="M274.35,-116.93C310.6,-118.54 362.52,-120.86 401.49,-122.59"></path> <polygon fill="black" stroke="black" points="401.46,-126.1 411.61,-123.04 401.77,-119.1 401.46,-126.1"></polygon> <text text-anchor="middle" x="322.43" y="-123.3" font-family="Helvetica, Arial, sans-serif" font-size="11.00"> 下注 (Bet) </text> </g> <!-- Outcome_Check_Check --> <g id="node7" class="node">
+<title>
+Outcome_Check_Check
+</title>
+<path fill="#f5f5f5" stroke="black" d="M530.52,-62C530.52,-62 382.52,-62 382.52,-62 376.52,-62 370.52,-56 370.52,-50 370.52,-50 370.52,-12 370.52,-12 370.52,-6 376.52,0 382.52,0 382.52,0 530.52,0 530.52,0 536.52,0 542.52,-6 542.52,-12 542.52,-12 542.52,-50 542.52,-50 542.52,-56 536.52,-62 530.52,-62"></path> <text text-anchor="start" x="383.22" y="-37.4" font-family="Helvetica, Arial, sans-serif" font-weight="bold" font-size="14.00">結局 5: 攤牌 (Check-Back)</text> <text text-anchor="start" x="438.43" y="-16.4" font-family="Helvetica, Arial, sans-serif" font-size="14.00">池底: P</text> </g> <!-- B2&#45;&gt;Outcome_Check_Check --> <g id="edge5" class="edge">
+<title>
+B2-&gt;Outcome_Check_Check
+</title>
+<path fill="none" stroke="black" d="M271.72,-99.79C297.13,-90.28 330.95,-77.62 362.65,-65.76"></path> <polygon fill="black" stroke="black" points="364.27,-68.89 372.41,-62.1 361.82,-62.33 364.27,-68.89"></polygon> <text text-anchor="middle" x="322.43" y="-93.3" font-family="Helvetica, Arial, sans-serif" font-size="11.00"> 過牌 (Check) </text> </g> <!-- Outcome_Check_Bet_Call --> <g id="node8" class="node">
+<title>
+Outcome_Check_Bet_Call
+</title>
+<path fill="#f5f5f5" stroke="black" d="M711.86,-189.6C711.86,-189.6 644.4,-189.6 644.4,-189.6 638.4,-189.6 632.4,-183.6 632.4,-177.6 632.4,-177.6 632.4,-146.4 632.4,-146.4 632.4,-140.4 638.4,-134.4 644.4,-134.4 644.4,-134.4 711.86,-134.4 711.86,-134.4 717.86,-134.4 723.86,-140.4 723.86,-146.4 723.86,-146.4 723.86,-177.6 723.86,-177.6 723.86,-183.6 717.86,-189.6 711.86,-189.6"></path> <text text-anchor="middle" x="678.13" y="-166.2" font-family="Helvetica, Arial, sans-serif" font-size="14.00">結局 3: 攤牌</text> <text text-anchor="middle" x="678.13" y="-149.4" font-family="Helvetica, Arial, sans-serif" font-size="14.00">(池底: P+2B)</text> </g> <!-- A2&#45;&gt;Outcome_Check_Bet_Call --> <g id="edge7" class="edge">
+<title>
+A2-&gt;Outcome_Check_Bet_Call
+</title>
+<path fill="none" stroke="black" d="M500.91,-132.31C535.64,-138.16 584.58,-146.41 622.07,-152.72"></path> <polygon fill="black" stroke="black" points="621.88,-156.24 632.32,-154.45 623.05,-149.34 621.88,-156.24"></polygon> <text text-anchor="middle" x="586.64" y="-154.3" font-family="Helvetica, Arial, sans-serif" font-size="11.00"> 跟注 (Call) </text> </g> <!-- Outcome_Check_Bet_Fold --> <g id="node9" class="node">
+<title>
+Outcome_Check_Bet_Fold
+</title>
+<path fill="#f5f5f5" stroke="black" d="M713.36,-115.6C713.36,-115.6 642.9,-115.6 642.9,-115.6 636.9,-115.6 630.9,-109.6 630.9,-103.6 630.9,-103.6 630.9,-72.4 630.9,-72.4 630.9,-66.4 636.9,-60.4 642.9,-60.4 642.9,-60.4 713.36,-60.4 713.36,-60.4 719.36,-60.4 725.36,-66.4 725.36,-72.4 725.36,-72.4 725.36,-103.6 725.36,-103.6 725.36,-109.6 719.36,-115.6 713.36,-115.6"></path> <text text-anchor="middle" x="678.13" y="-92.2" font-family="Helvetica, Arial, sans-serif" font-size="14.00">結局 4: B 獲勝</text> <text text-anchor="middle" x="678.13" y="-75.4" font-family="Helvetica, Arial, sans-serif" font-size="14.00">(A 棄牌)</text> </g> <!-- A2&#45;&gt;Outcome_Check_Bet_Fold --> <g id="edge8" class="edge">
+<title>
+A2-&gt;Outcome_Check_Bet_Fold
+</title>
+<path fill="none" stroke="black" d="M500.91,-117.69C535.18,-111.91 583.3,-103.81 620.59,-97.53"></path> <polygon fill="black" stroke="black" points="621.52,-100.92 630.8,-95.81 620.36,-94.02 621.52,-100.92"></polygon> <text text-anchor="middle" x="586.64" y="-110.3" font-family="Helvetica, Arial, sans-serif" font-size="11.00"> 棄牌 (Fold) </text> </g> </g>
 </svg>
 </div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-full-game-tree-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Full Game Tree: Player B can Bet after A Checks
-</figcaption>
+<figcaption class="figure-caption">Figure&nbsp;1: Full Game Tree: Player B can Bet after A Checks</figcaption>
 </figure>
 </div>
 </div>
@@ -190,7 +138,7 @@ Figure&nbsp;1: Full Game Tree: Player B can Bet after A Checks
 <section id="player-a-的期望值" class="level3">
 <h3 class="anchored" data-anchor-id="player-a-的期望值">Player A 的期望值</h3>
 <p>遊戲有五種結局，我們寫個表來看看他們分別對 Player A 的 payoff 是多少：</p>
-<table class="caption-top table">
+<table class="table">
 <colgroup>
 <col style="width: 41%">
 <col style="width: 18%">
@@ -277,34 +225,262 @@ Figure&nbsp;1: Full Game Tree: Player B can Bet after A Checks
 </ul>
 <p>這樣確實是 Player B 對 Player A 最嚴厲的攻擊。但有個風險，因為沒有滿足 <img src="https://latex.codecogs.com/png.latex?%5Ceqref%7Beq:x2-ratio%7D">，所以如果 Player A 改變 <img src="https://latex.codecogs.com/png.latex?x_2%5E*">，就可以對 Player B 進行剝削。(至於這一來一往是正的還是負的? 感覺不好估計)</p>
 <p>我們換個角度想，Player B 能不能選 <img src="https://latex.codecogs.com/png.latex?z_1%5E*,%20z_2%5E*"> 使得就算 Player A 改變 <img src="https://latex.codecogs.com/png.latex?x_2%5E*"> 也不會被剝削?</p>
-<p>也就是要把 <img src="https://latex.codecogs.com/png.latex?z_1%5E*,%20z_2%5E*"> 選成跟 <img src="https://latex.codecogs.com/png.latex?x_2%5E*"> 無關的形式。回頭看看 <img src="https://latex.codecogs.com/png.latex?%5Ceqref%7Beq:z1-ratio%7D">, <img src="https://latex.codecogs.com/png.latex?%5Ceqref%7Beq:z2-ratio%7D">，我們發現只要滿足下面的條件就可以了: <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Bcases%7D%0A%5Cdisplaystyle%20%5Cint_%7B%5Ctextcolor%7Bred%7D%7Bz_1%5E*%7D%7D%5E%7B%5Ctextcolor%7Bred%7D%7Bz_2%5E*%7D%7D%20(1%20-%20a_1(x))%20dx%20:%20%5Cint_%7B%5Ctextcolor%7Bred%7D%7Bz_2%5E*%7D%7D%5E1%20(1%20-%20a_1(x))%20dx%20=%20(B%20+%20%5Cfrac%7BP%7D%7B2%7D)%20:%20%5Cfrac%7BP%7D%7B2%7D%20%20%20%5C%5C%0A%5Cdisplaystyle%20%5Ctextcolor%7Bred%7D%7Bz_1%5E*%7D%20:%20(1%20-%20%5Ctextcolor%7Bred%7D%7Bz_2%5E*%7D)%20=%20B%20:%20(P+B)%0A%5Cend%7Bcases%7D%20%5Ctag%7B9%7D%5Clabel%7Beq:z1z2-equations%7D%0A"> 這邊很巧妙把 <img src="https://latex.codecogs.com/png.latex?B:P"> 和 <img src="https://latex.codecogs.com/png.latex?1:1">，變成了 <img src="https://latex.codecogs.com/png.latex?B%20+%20%5Cfrac%7BP%7D%7B2%7D%20:%20%5Cfrac%7BP%7D%7B2%7D">，如此一來就跟 <img src="https://latex.codecogs.com/png.latex?x_2%5E*"> 無關，而多出來的自由度可以讓 Player B 調整 <img src="https://latex.codecogs.com/png.latex?z_1%5E*,%20z_2%5E*"> 來滿足面積條件 <img src="https://latex.codecogs.com/png.latex?%5Ceqref%7Beq:x2-ratio%7D">。</p>
+<p>也就是要把 <img src="https://latex.codecogs.com/png.latex?z_1%5E*,%20z_2%5E*"> 選成跟 <img src="https://latex.codecogs.com/png.latex?x_2%5E*"> 無關的形式。回頭看看 <img src="https://latex.codecogs.com/png.latex?%5Ceqref%7Beq:z1-ratio%7D">, <img src="https://latex.codecogs.com/png.latex?%5Ceqref%7Beq:z2-ratio%7D">，我們發現只要滿足下面的條件就可以了: <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Bcases%7D%0A%5Cdisplaystyle%20%5Cint_%7B%5Ctextcolor%7Bred%7D%7Bz_1%5E*%7D%7D%5E%7B%5Ctextcolor%7Bred%7D%7Bz_2%5E*%7D%7D%20(1%20-%20a_1(x))%20dx%20:%20%5Cint_%7B%5Ctextcolor%7Bred%7D%7Bz_2%5E*%7D%7D%5E1%20(1%20-%20a_1(x))%20dx%20=%20(B%20+%20%5Cfrac%7BP%7D%7B2%7D)%20:%20%5Cfrac%7BP%7D%7B2%7D%20%20%20%5C%5C%0A%5Cdisplaystyle%20%5Ctextcolor%7Bred%7D%7Bz_1%5E*%7D%20:%20(1%20-%20%5Ctextcolor%7Bred%7D%7Bz_2%5E*%7D)%20=%20B%20:%20(P+B)%0A%5Cend%7Bcases%7D%20%5Ctag%7B8%7D%5Clabel%7Beq:z1z2-equations%7D%0A"> 這邊很巧妙把 <img src="https://latex.codecogs.com/png.latex?B:P"> 和 <img src="https://latex.codecogs.com/png.latex?1:1">，變成了 <img src="https://latex.codecogs.com/png.latex?B%20+%20%5Cfrac%7BP%7D%7B2%7D%20:%20%5Cfrac%7BP%7D%7B2%7D">，如此一來就跟 <img src="https://latex.codecogs.com/png.latex?x_2%5E*"> 無關，而多出來的自由度可以讓 Player B 調整 <img src="https://latex.codecogs.com/png.latex?z_1%5E*,%20z_2%5E*"> 來滿足面積條件 <img src="https://latex.codecogs.com/png.latex?%5Ceqref%7Beq:x2-ratio%7D">。</p>
 <p>這邊有點一直交換 Min-Max的順序來論證，應該是對的。</p>
 <p>現在我們得到小結論，Player B 只要知道 <img src="https://latex.codecogs.com/png.latex?a_1(x)">，就可以選出一組 <img src="https://latex.codecogs.com/png.latex?b_1(y),%20b_2(y)"> (也就是 <img src="https://latex.codecogs.com/png.latex?y_1%5E*,%20z_1%5E*,%20z_2%5E*">) 來攻擊 Player A。</p>
 <p>所以問題已經約化到只剩最後一個函數: <img src="https://latex.codecogs.com/png.latex?a_1(x)">，要取多少可以最大化 Lagrangian。</p>
 <p>先來看看完整的 Lagrangian，我們先在沒有 <img src="https://latex.codecogs.com/png.latex?%5Ceqref%7Beq:z1z2-equations%7D"> 約束下解，也就是這邊的等式對於一般的 <img src="https://latex.codecogs.com/png.latex?y_1%5E*,%20z_1%5E*,%20z_2%5E*"> 都成立 (順便研究 Player A 的攻擊策略): <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A&amp;%5Cmathcal%7BL%7D(a_1,%20a_2,%20b_1,%20b_2)%20%20%5C%5C%0A&amp;=%20%5Cint_0%5E1%20%5Cint_0%5E1%0A%5Cleft%5B%0A%5Cbegin%7Baligned%7D%0A%20%20%20%20&amp;%20a_1(x)%20%5Ccdot%20%5Cmathbb%7B1%7D_%7By%3Ey_1%5E*%7D%20%5Ccdot%20%5CBig(%20(P+B)%5Cmathbb%7B1%7D_%7Bx%3Ey%7D%20-%20B%5Cmathbb%7B1%7D_%7Bx%3Cy%7D%20%5CBig)%20%5C%5C%0A%20%20%20%20+%20&amp;%20a_1(x)%20%5Ccdot%20(1%20-%20%5Cmathbb%7B1%7D_%7By%3Ey_1%5E*%7D)%20%5Ccdot%20P%20%5C%5C%0A%20%20%20%20+%20&amp;%20(1%20-%20a_1(x))%20%5Ccdot%20(%5Cmathbb%7B1%7D_%7By%20%3C%20z_1%5E*%7D%20+%20%5Cmathbb%7B1%7D_%7By%20%3E%20z_2%5E*%7D)%20%5Ccdot%20(%5Cmathbb%7B1%7D_%7Bx%3Ex_2%5E*%7D)%20%5Ccdot%20%5CBig(%20(P+B)%5Cmathbb%7B1%7D_%7Bx%3Ey%7D%20-%20B%5Cmathbb%7B1%7D_%7Bx%3Cy%7D%20%5CBig)%20%5C%5C%0A%20%20%20%20+%20&amp;%20(1%20-%20a_1(x))%20%5Ccdot%20(1%20-%20%5Cmathbb%7B1%7D_%7By%20%3C%20z_1%5E*%7D%20-%20%5Cmathbb%7B1%7D_%7By%20%3E%20z_2%5E*%7D)%20%5Ccdot%20P%20%5Cmathbb%7B1%7D_%7Bx%3Ey%7D%0A%5Cend%7Baligned%7D%0A%5Cright%5D%20dy%20%5C,%20dx%20%20%5C%5C%0A&amp;=%20%20%5Cint_0%5E1%20%5Cint_0%5E1%20%5Cunderbrace%7B%5CBig%5B%20(%5Cmathbb%7B1%7D_%7By%20%3C%20z_1%5E*%7D%20+%20%5Cmathbb%7B1%7D_%7By%20%3E%20z_2%5E*%7D)%20%5Ccdot%20%5Cmathbb%7B1%7D_%7Bx%3Ex_2%5E*%7D%20%5Ccdot%20%5CBig(%20(P+B)%5Cmathbb%7B1%7D_%7Bx%3Ey%7D%20-%20B%5Cmathbb%7B1%7D_%7Bx%3Cy%7D%20%5CBig)%20+%20(1%20-%20%5Cmathbb%7B1%7D_%7By%20%3C%20z_1%5E*%7D%20-%20%5Cmathbb%7B1%7D_%7By%20%3E%20z_2%5E*%7D)%20%5Ccdot%20P%20%5Cmathbb%7B1%7D_%7Bx%3Ey%7D%20%5CBig%5D%7D_%7BJ(x,y)%7D%20dy%20%5C,%20dx%20%5C%5C%0A&amp;%5Cquad%20+%20%5Cint_0%5E1%20%5Ctextcolor%7Bred%7D%7Ba_1(x)%7D%20%5Ccdot%20%5Cunderbrace%7B%5Cleft(%20%5Cint_0%5E1%0A%5Cleft%5B%0A%5Cbegin%7Baligned%7D%0A%20%20%20%20&amp;%20%5Cmathbb%7B1%7D_%7By%3Ey_1%5E*%7D%20%5Ccdot%20%5CBig(%20(P+B)%5Cmathbb%7B1%7D_%7Bx%3Ey%7D%20-%20B%5Cmathbb%7B1%7D_%7Bx%3Cy%7D%20%5CBig)%20+%20(1%20-%20%5Cmathbb%7B1%7D_%7By%3Ey_1%5E*%7D)%20%5Ccdot%20P%20%5C%5C%0A%20%20%20%20&amp;%20-%20(%5Cmathbb%7B1%7D_%7By%20%3C%20z_1%5E*%7D%20+%20%5Cmathbb%7B1%7D_%7By%20%3E%20z_2%5E*%7D)%20%5Ccdot%20%5Cmathbb%7B1%7D_%7Bx%3Ex_2%5E*%7D%20%5Ccdot%20%5CBig(%20(P+B)%5Cmathbb%7B1%7D_%7Bx%3Ey%7D%20-%20B%5Cmathbb%7B1%7D_%7Bx%3Cy%7D%20%5CBig)%20%5C%5C%0A%20%20%20%20&amp;%20-%20(1%20-%20%5Cmathbb%7B1%7D_%7By%20%3C%20z_1%5E*%7D%20-%20%5Cmathbb%7B1%7D_%7By%20%3E%20z_2%5E*%7D)%20%5Ccdot%20P%20%5Cmathbb%7B1%7D_%7Bx%3Ey%7D%0A%5Cend%7Baligned%7D%0A%5Cright%5D%20dy%20%5Cright)%7D_%7BG(x)%7D%20dx%0A%5Cend%7Balign%7D%0A"> 有些些混亂，我們把大於的符號一律改成小於的方向，看比較清楚。</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cmathcal%7BL%7D(a_1,%20a_2,%20b_1,%20b_2)%20&amp;=%20%5Cint_0%5E1%20%5Cint_0%5E1%20J(x,y)%20%5C,%20dy%20%5C,%20dx%20+%20%5Cint_0%5E1%20%5Ctextcolor%7Bred%7D%7Ba_1(x)%7D%20%5Ccdot%20G(x)%20%5C,%20dx%20%5C%5C%0A%5Ctext%7B%E5%85%B6%E4%B8%AD%7D%20%5Cquad%0AJ(x,y)%20&amp;=%20(%5Cmathbb%7B1%7D_%7By%20%3C%20z_1%5E*%7D%20+%20%5Cmathbb%7B1%7D_%7Bz_2%5E*%20%3C%20y%7D)%20%5Ccdot%20%5Cmathbb%7B1%7D_%7Bx_2%5E*%20%3C%20x%7D%20%5Ccdot%20%5CBig(%20(P+B)%5Cmathbb%7B1%7D_%7By%20%3C%20x%7D%20-%20B%5Cmathbb%7B1%7D_%7Bx%20%3C%20y%7D%20%5CBig)%20+%20%5Cmathbb%7B1%7D_%7Bz_1%5E*%20%5Cle%20y%20%5Cle%20z_2%5E*%7D%20%5Ccdot%20P%20%5Cmathbb%7B1%7D_%7By%20%3C%20x%7D%20%5C%5C%0AG(x)%20&amp;=%20%5Cint_0%5E1%0A%5Cleft%5B%0A%5Cbegin%7Baligned%7D%0A%20%20%20%20&amp;%20%5Cmathbb%7B1%7D_%7By_1%5E*%20%3C%20y%7D%20%5Ccdot%20%5CBig(%20(P+B)%5Cmathbb%7B1%7D_%7By%20%3C%20x%7D%20-%20B%5Cmathbb%7B1%7D_%7Bx%20%3C%20y%7D%20%5CBig)%20+%20P%20%5Cmathbb%7B1%7D_%7By%20%5Cle%20y_1%5E*%7D%20%5C%5C%0A%20%20%20%20&amp;%20-%20%5Cmathbb%7B1%7D_%7Bx_2%5E*%20%3C%20x%7D%20%5Ccdot%20(%5Cmathbb%7B1%7D_%7By%20%3C%20z_1%5E*%7D%20+%20%5Cmathbb%7B1%7D_%7Bz_2%5E*%20%3C%20y%7D)%20%5Ccdot%20%5CBig(%20(P+B)%5Cmathbb%7B1%7D_%7By%20%3C%20x%7D%20-%20B%5Cmathbb%7B1%7D_%7Bx%20%3C%20y%7D%20%5CBig)%20%5C%5C%0A%20%20%20%20&amp;%20-%20P%20%5Cmathbb%7B1%7D_%7Bz_1%5E*%20%5Cle%20y%20%5Cle%20z_2%5E*%7D%20%5Ccdot%20%5Cmathbb%7B1%7D_%7By%20%3C%20x%7D%0A%5Cend%7Baligned%7D%0A%5Cright%5D%20dy%0A%5Cend%7Balign%7D%0A"> 好，雖然有點小複雜，但這都是 indicator function，積分通常可以直接算出來。</p>
-<div id="fig-jxy-region" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-jxy-region-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://your-website-url.example.com/posts/poker/images/lesson_7/integral_region_Jxy.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-jxy-region-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: <img src="https://latex.codecogs.com/png.latex?J(x,y)"> Integral Region
-</figcaption>
+<div id="fig-jxy-region" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/poker/images/lesson_7/integral_region_Jxy.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;2: <img src="https://latex.codecogs.com/png.latex?J(x,y)"> Integral Region</figcaption>
 </figure>
 </div>
 <p>我們先假設有 <img src="https://latex.codecogs.com/png.latex?z_1%5E*%20%5Cleq%20x_2%5E*%20%5Cleq%20z_2%5E*">， <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Baligned%7D%0A%5Cint_0%5E1%20%5Cint_0%5E1%20J(x,y)%20%5C,%20dy%20%5C,%20dx%0A&amp;=%20P%5Ccdot%20(z_2%5E*%20-%20z_1%5E*)(1-%5Cfrac%7Bz_2%5E*%20+%20z_1%5E*%7D%7B2%7D)%20%5C%5C%0A&amp;%5Cquad%20+%20(P+B)%5Ccdot%20%5Cleft(%20%5Cfrac%7B(1-z_2%5E*)%5E2%7D%7B2%7D%20+%20z_1%5E*(1-x_2%5E*)%20%5Cright)%20%5C%5C%0A&amp;%5Cquad%20-%20B%20%5Ccdot%20(1-z_2%5E*)(%5Cfrac%7B1+z_2%5E*%7D%7B2%7D%20-%20x_2%5E*)%20%5C%5C%0A&amp;=%20P%20%5Ccdot%20%5Cleft%5B%20%5Cfrac%7B(1-z_1%5E*)%5E2%7D%7B2%7D%20+%20z_1%5E*(1-x_2%5E*)%20%5Cright%5D%20+%20B%20%5Ccdot%20%5Cleft%5B%20z_1%5E*(1-x_2%5E*)%20-%20(1-z_2%5E*)(z_2%5E*%20-%20x_2%5E*)%20%5Cright%5D%0A%5Cend%7Baligned%7D%0A"></p>
-<p>已經有點醜了，再來試試看 <img src="https://latex.codecogs.com/png.latex?G(x)">，注意到積分後半段跟剛才的 <img src="https://latex.codecogs.com/png.latex?J(x,y)"> 其實一樣，然後前半段相對簡單。 <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0AG(x)%20&amp;=%20%5Cunderbrace%7B%0A%5Cbegin%7Bcases%7D%0A(P+B)y_1%5E*%20-%20B%20&amp;%20%5Ctext%7Bif%20%7D%20x%20%5Cle%20y_1%5E*%20%5C%5C%0A(P+2B)x%20-%20B(1+y_1%5E*)%20&amp;%20%5Ctext%7Bif%20%7D%20x%20%3E%20y_1%5E*%0A%5Cend%7Bcases%7D%0A%7D_%7B%5Ctext%7BPart%201:%20%7D%20y_1%5E*%20%5Ctext%7B%20Dependent%20Terms%7D%7D%20%5C%5C%0A&amp;%5Cqquad%20+%0A%5Cunderbrace%7B%0A%5Cbegin%7Bcases%7D%0A0%20&amp;%20%5Ctext%7Bif%20%7D%20x%20%3C%20z_1%5E*%20%5C%5C%0A-P(x%20-%20z_1%5E*)%20&amp;%20%5Ctext%7Bif%20%7D%20z_1%5E*%20%5Cle%20x%20%5Cle%20x_2%5E*%20%5C%5C%0A-Px%20+%20B(1%20-%20z_1%5E*%20-%20z_2%5E*)%20&amp;%20%5Ctext%7Bif%20%7D%20x_2%5E*%20%3C%20x%20%3C%20z_2%5E*%20%5C%5C%0A-(P+2B)x%20+%20B(1%20-%20z_1%5E*%20+%20z_2%5E*)%20&amp;%20%5Ctext%7Bif%20%7D%20x%20%5Cge%20z_2%5E*%0A%5Cend%7Bcases%7D%0A%7D_%7B%5Ctext%7BPart%202:%20%7D%20z_1%5E*,%20x_2%5E*,%20z_2%5E*%20%5Ctext%7B%20Dependent%20Terms%7D%7D%20%20%5Ctag%7B8%7D%5Clabel%7Beq:Gx-pieces%7D%0A%5Cend%7Balign%7D%0A"></p>
+<p>已經有點醜了，再來試試看 <img src="https://latex.codecogs.com/png.latex?G(x)">，注意到積分後半段跟剛才的 <img src="https://latex.codecogs.com/png.latex?J(x,y)"> 其實一樣，然後前半段相對簡單。 <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0AG(x)%20&amp;=%20%5Cunderbrace%7B%0A%5Cbegin%7Bcases%7D%0A(P+B)y_1%5E*%20-%20B%20&amp;%20%5Ctext%7Bif%20%7D%20x%20%5Cle%20y_1%5E*%20%5C%5C%0A(P+2B)x%20-%20B(1+y_1%5E*)%20&amp;%20%5Ctext%7Bif%20%7D%20x%20%3E%20y_1%5E*%0A%5Cend%7Bcases%7D%0A%7D_%7B%5Ctext%7BPart%201:%20%7D%20y_1%5E*%20%5Ctext%7B%20Dependent%20Terms%7D%7D%20%5C%5C%0A&amp;%5Cqquad%20+%0A%5Cunderbrace%7B%0A%5Cbegin%7Bcases%7D%0A0%20&amp;%20%5Ctext%7Bif%20%7D%20x%20%3C%20z_1%5E*%20%5C%5C%0A-P(x%20-%20z_1%5E*)%20&amp;%20%5Ctext%7Bif%20%7D%20z_1%5E*%20%5Cle%20x%20%5Cle%20x_2%5E*%20%5C%5C%0A-Px%20+%20B(1%20-%20z_1%5E*%20-%20z_2%5E*)%20&amp;%20%5Ctext%7Bif%20%7D%20x_2%5E*%20%3C%20x%20%3C%20z_2%5E*%20%5C%5C%0A-(P+2B)x%20+%20B(1%20-%20z_1%5E*%20+%20z_2%5E*)%20&amp;%20%5Ctext%7Bif%20%7D%20x%20%5Cge%20z_2%5E*%0A%5Cend%7Bcases%7D%0A%7D_%7B%5Ctext%7BPart%202:%20%7D%20z_1%5E*,%20x_2%5E*,%20z_2%5E*%20%5Ctext%7B%20Dependent%20Terms%7D%7D%20%20%5Ctag%7B9%7D%5Clabel%7Beq:Gx-pieces%7D%0A%5Cend%7Balign%7D%0A"></p>
 <p>其實還不算是太醜(?)，基本上是由折線線段組成的，但在第二項 <img src="https://latex.codecogs.com/png.latex?x=x_2%5E*"> 有個(可能)不連續的點。而這個點若要連續，就是要滿足面積比例的條件!! <img src="https://latex.codecogs.com/png.latex?%0Az_1%5E*%20:%20(1-z_2%5E*)%20=%20B%20:%20(P+B)%0A"></p>
 <p>現在我們使用 <img src="https://latex.codecogs.com/png.latex?%5Ceqref%7Beq:z1z2-equations%7D"> 的條件，所以以下結果開始基於有面積比例的條件。</p>
 <p><img src="https://latex.codecogs.com/png.latex?J(x,y)"> 積分變得好看很多，而 <img src="https://latex.codecogs.com/png.latex?G(x)"> 第二項也會連續。因為前後兩段斜率相同，所以會直接變一段。</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cint_0%5E1%20%5Cint_0%5E1%20J(x,y)%20%5C,%20dy%20%5C,%20dx%20=%20%20%5Cfrac%7BP%7D%7B2%7D(1-z_1%5E*)%5E2%20+%20B(1-z_2%5E*)%5E2%0A"> <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0AG_1(x)%20&amp;=%20%5Cbegin%7Bcases%7D%0A(P+B)y_1%5E*%20-%20B%20&amp;%20%5Ctext%7B,%20if%20%7D%20x%20%5Cle%20y_1%5E*%20%5C%5C%0A(P+2B)x%20-%20B(1+y_1%5E*)%20&amp;%20%5Ctext%7B,%20if%20%7D%20x%20%3E%20y_1%5E*%0A%5Cend%7Bcases%7D%20%20%5C%5C%0AG_2(x)%20&amp;=%0A%5Cbegin%7Bcases%7D%0A0%20&amp;%20%5Ctext%7B,%20if%20%7D%20x%20%3C%20z_1%5E*%20%5C%5C%0AP(x%20-%20z_1%5E*)%20&amp;%20%5Ctext%7B,%20if%20%7D%20z_1%5E*%20%5Cle%20x%20%5Cle%20z_2%5E*%20%5C%5C%0A(P+2B)(x+z_1%5E*)%20-%202B%20&amp;%20%5Ctext%7B,%20if%20%7D%20x%20%5Cge%20z_2%5E*%0A%5Cend%7Bcases%7D%20%5C%5C%0AG(x)%20&amp;=%20G_1(x)%20-%20G_2(x)%20%5C%5C%0A%5Cend%7Balign%7D%0A"> 我們把 <img src="https://latex.codecogs.com/png.latex?G"> 拆分成兩個，第二個加了負號，這樣一來斜率都是正的了。還有做了一些簡單的代數代換，讀者可自行驗證。</p>
-<p>現在帶回 Lagrangian，這邊回憶一下，從推導過程可以發現 其實 <img src="https://latex.codecogs.com/png.latex?G_2(x)%20=%20%5Cint_0%5E1%20J(x,y)%20dy"> ，所以我們把常數項合併回去給 <img src="https://latex.codecogs.com/png.latex?G_2">: <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cmathcal%7BL%7D(a_1)%20&amp;=%20%5Cint_0%5E1%20%5Cint_0%5E1%20J(x,y)%20%5C,%20dy%20%5C,%20dx%20+%20%5Cint_0%5E1%20a_1(x)%20%5Ccdot%20G(x)%20%5C,%20dx%20%5C%5C%0A&amp;=%20%5Cint_0%5E1%20a_1(x)%20%5Ccdot%20G_1(x)%20%5C,%20dx%20+%20%5Cint_0%5E1%20(1%20-%20a_1(x))%20%5Ccdot%20G_2(x)%20%5C,%20dx%20%5C%5C%0A%5Cend%7Balign%7D%0A"> 我們又回到了簡潔的式子，第一項就是 Player A bet 的情況，第二項是 Player A check 的情況。</p>
-<p>交換一下順序，假設 <img src="https://latex.codecogs.com/png.latex?y_1%5E*"> 固定，<img src="https://latex.codecogs.com/png.latex?z_2%5E*%20=%201%20-%20%5Cfrac%7BP+B%7D%7BB%7Dz_1%5E*">。待會再回來解 <img src="https://latex.codecogs.com/png.latex?y_1%5E*,%20z_1%5E*">。</p>
-<p>根據 <img src="https://latex.codecogs.com/png.latex?%5Ceqref%7Beq:z1z2-equations%7D">，在這兩個條件下，我們來看 <img src="https://latex.codecogs.com/png.latex?a_1(x)"> 要怎麼取可以最大化 Lagrangian。</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cmathcal%7BL%7D(a_1)%0A&amp;=%20%20%5Cint_0%5E%7By_1%5E*%7D%20a_1(x)%5Ccdot%20%5CBig((P+B)y_1%5E*%20-%20B%5CBig)%20%5C,%20dx%20+%20%5Cint_%7By_1%5E*%7D%5E1%20a_1(x)%20%5Ccdot%20%5CBig(%20(P+2B)x%20-%20B(1+y_1%5E*)%20%5CBig)%20dx%20%5C%5C%0A&amp;%5Cquad%20+%20%5Cint_%7Bz_1%5E*%7D%5E%7Bz_2%5E*%7D%20(1%20-%20a_1(x))%20%5Ccdot%20P(x%20-%20z_1%5E*)%20%5C,%20dx%20%5C%5C%0A&amp;%5Cquad%20+%20%5Cint_%7Bz_2%5E*%7D%5E1%20(1%20-%20a_1(x))%20%5Ccdot%20%5CBig(%20(P+2B)(x+z_1%5E*)%20-%202B%20%5CBig)%20dx%20%5C%5C%0A%5Cend%7Balign%7D%0A"> 神奇的是，Part 1 的 <img src="https://latex.codecogs.com/png.latex?y_1%5E*"> 自己消掉了，而 Part 2 的 <img src="https://latex.codecogs.com/png.latex?z_1%5E*"> 也自己消掉了。 $$ <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Balign%7D%0A%5Cmathcal%7BL%7D(a_1)%0A&amp;=%20%20y_1%5E*%20%5Ccdot%20%5Cunderbrace%7B%5Cleft(%0A%20%20%5Cint_0%5E%7By_1%5E*%7D%20a_1(x)%5Ccdot(P+B)%20%5C,%20dx%20-%20%5Cint_%7By_1%5E*%7D%5E1%20a_1(x)%20%5Ccdot%20B%20dx%20%5C%5C%0A%20%20%5Cright)%7D_%7B=0%7D%20%5C%5C%0A&amp;%5Cquad%20+%20(P+2B)%20%5Ccdot%20%5Cint_%7By_1%5E*%7D%5E1%20a_1(x)%20%5Ccdot%20x%20%5C,%20dx%20-%20B%20%5Cint_%7B0%7D%5E1%20a_1(x)%20%5C,%20dx%20%5C%5C%0A&amp;%5Cquad%20+%20z_1%5E*%20%5Ccdot%20%5Cunderbrace%7B%5Cleft(%0A%20%20%5Cint_%7Bz_1%5E*%7D%5E%7Bz_2%5E*%7D%20(1%20-%20a_1(x))%20%5Ccdot%20(-P)%20%5C,%20dx%20+%20%5Cint_%7Bz_2%5E*%7D%5E1%20(1%20-%20a_1(x))%20%5Ccdot%20(P+2B)%20%5C,%20dx%0A%20%20%5Cright)%7D_%7B=0%7D%20%5C%5C%0A&amp;%5Cquad%20+%20(2P+2B)%20%5Ccdot%20%5Cint_%7Bz_1%5E*%7D%5E1%20(1%20-%20a_1(x))%20%5Ccdot%20x%20%5C,%20dx%20-%202B%20%5Cint_%7Bz_2%5E*%7D%5E1%20(1%20-%20a_1(x))%20%5C,%20dx%20%5C%5C%0A%0A&amp;=%20(P+2B)%20%5Ccdot%20%5Cint_%7By_1%5E*%7D%5E1%20a_1(x)%20%5Ccdot%20x%20%5C,%20dx%20-%20B%20%5Cint_%7B0%7D%5E1%20a_1(x)%20%5C,%20dx%20%5C%5C%0A&amp;%5Cquad%20+%202(P+B)%20%5Ccdot%20%5Cint_%7Bz_1%5E*%7D%5E1%20(1%20-%20a_1(x))%20%5Ccdot%20x%20%5C,%20dx%20-%202B%20%5Cint_%7Bz_2%5E*%7D%5E1%20(1%20-%20a_1(x))%20%5C,%20dx%0A%5Cend%7Balign%7D"> $$</p>
-<p>居然剩下乾乾淨淨的四項，最後來解一下面積，直覺上 <img src="https://latex.codecogs.com/png.latex?y_1%5E*"> 應該在 <img src="https://latex.codecogs.com/png.latex?z_1%5E*"> 和 <img src="https://latex.codecogs.com/png.latex?z_2%5E*"> 之間，但等等可能還是要檢查一下其他狀況。我們假設面積 <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Baligned%7D%0A%5Cint_0%5E%7Bz_1%5E*%7D%20a_1(x)%20dx%20&amp;=%20A_1%20%5C%5C%0A%5Cint_%7Bz_1%5E*%7D%5E%7By_1%5E*%7D%20a_1(x)%20dx%20&amp;=%20A_2%20%5C%5C%0A%5Cint_%7By_1%5E*%7D%5E%7Bz_2%5E*%7D%20a_1(x)%20dx%20&amp;=%20A_3%20%5C%5C%0A%5Cint_%7Bz_2%5E*%7D%5E1%20a_1(x)%20dx%20&amp;=%20A_4%20%5C%5C%0A%5Cend%7Baligned%7D%0A"> 現在在固定 <img src="https://latex.codecogs.com/png.latex?z_1%5E*,%20y_1%5E*,%20z_2%5E*"> 之下，去看面積要如何分配。先列一下等式 <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Baligned%7D%0A%5Cfrac%7BA_1%20+%20A_2%7D%7BA_3%20+%20A_4%7D%20&amp;=%20%5Cfrac%7BB%7D%7BP+B%7D%20%20%5C%5C%0A%5Cfrac%7Bz_2%5E*-z_1%5E*%20-%20A_2%20-%20A_3%7D%7B1%20-%20z_2%5E*%20-%20A_4%7D%20&amp;=%20%5Cfrac%7B2B%20+%20P%7D%7BP%7D%20%5C%5C%0A%5Cfrac%7Bz_1%5E*%7D%7B1%20-%20z_2%5E*%7D%20&amp;=%20%5Cfrac%7BB%7D%7BP+B%7D%20%5C%5C%0A%5Cend%7Baligned%7D%0A"> 可以都用 <img src="https://latex.codecogs.com/png.latex?A_4"> 來表示: <img src="https://latex.codecogs.com/png.latex?%0AA_2%20+%20A_3%20=%20z_2%5E*-z_1%5E*%20-%20(1%20-%20z_2%5E*%20-%20A_4)%5Ccdot%20%5Cfrac%7B2B%20+%20P%7D%7BP%7D%0A"></p>
-<p>繼續假設 <img src="https://latex.codecogs.com/png.latex?z_1%5E*%20%5Cle%20y_1%5E*%20%5Cle%20z_2%5E*">，我們來看 Lagrangian: <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Baligned%7D%0A%5Cmathcal%7BL%7D(a_1)%0A&amp;=%20-P%20%5Cint_%7Bz_1%5E*%7D%5E%7B1%7D%20a_1(x)%5Ccdot%20x%20%5C,%20dx%20-%20(P+2B)%20%20%5Cint_%7Bz_1%5E*%7D%5E%7By_1%5E*%7D%20a_1(x)%5Ccdot%20x%20%5C,%20dx%20%5C%5C%0A&amp;%5Cquad%20-B%5Ccdot%20(A_1%20+%20A_2%20+%20A_3%20+%20A_4)%20+%202B%20%5Ccdot%20A_4%20%5C%5C%0A&amp;%5Cquad%20+%202(P+B)%20%5Ccdot%20%5Cfrac%7B1-(z_1%5E*)%5E2%7D%7B2%7D%20-2B%20%5Ccdot%20(1%20-%20z_2%5E*)%20%5C%5C%0A%5Cend%7Baligned%7D%0A"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cint_0%5E1%20%5Cint_0%5E1%20J(x,y)%20%5C,%20dy%20%5C,%20dx%20=%20%20%5Cfrac%7BP%7D%7B2%7D(1-z_1%5E*)%5E2%20+%20B(1-z_2%5E*)%5E2%20%20%5Ctag%7B10%7D%5Clabel%7Beq:Jxy-integral-with-constraints%7D%0A"> <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0AG_1(x)%20&amp;=%20%5Cbegin%7Bcases%7D%0A(P+B)y_1%5E*%20-%20B%20&amp;%20%5Ctext%7B,%20if%20%7D%20x%20%5Cle%20y_1%5E*%20%5C%5C%0A(P+2B)x%20-%20B(1+y_1%5E*)%20&amp;%20%5Ctext%7B,%20if%20%7D%20x%20%3E%20y_1%5E*%0A%5Cend%7Bcases%7D%20%20%5Ctag%7B11%7D%5Clabel%7Beq:G1x%7D%20%5C%5C%0AG_2(x)%20&amp;=%0A%5Cbegin%7Bcases%7D%0A0%20&amp;%20%5Ctext%7B,%20if%20%7D%20x%20%3C%20z_1%5E*%20%5C%5C%0AP(x%20-%20z_1%5E*)%20&amp;%20%5Ctext%7B,%20if%20%7D%20z_1%5E*%20%5Cle%20x%20%5Cle%20z_2%5E*%20%5C%5C%0A(P+2B)(x+z_1%5E*)%20-%202B%20&amp;%20%5Ctext%7B,%20if%20%7D%20x%20%5Cge%20z_2%5E*%0A%5Cend%7Bcases%7D%20%20%5Ctag%7B12%7D%5Clabel%7Beq:G2x%7D%20%5C%5C%0AG(x)%20&amp;=%20G_1(x)%20-%20G_2(x)%20%5C%5C%0A%5Cend%7Balign%7D%0A"> 我們把 <img src="https://latex.codecogs.com/png.latex?G"> 拆分成兩個，第二個加了負號，這樣一來斜率都是正的了。還有做了一些簡單的代數代換，讀者可自行驗證。</p>
+<div id="fig-plot-G1-G2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/poker/images/lesson_7/G1_G2.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;3: Plot of G1 and G2</figcaption>
+</figure>
+</div>
+<p>單純看這個圖，我們就知道如果 <img src="https://latex.codecogs.com/png.latex?a_1(x)"> 要最大化 Lagrangian，那就是極化的，在兩端 <img src="https://latex.codecogs.com/png.latex?G(x)"> 是正的部分全 1，中間負的部分全 0。</p>
+<p>但真的是這樣嗎?</p>
+<p>因為 <img src="https://latex.codecogs.com/png.latex?G_1(x),%20G_2(x)"> 在開頭和結尾的斜率都一致，所以會不會 <strong>剛好重和</strong>。那樣一來 <img src="https://latex.codecogs.com/png.latex?G(x)"> 就是零，所以 <img src="https://latex.codecogs.com/png.latex?a_1(x)"> 可以是任意值。無差異! Indifference!</p>
+<p>但也不一定要取到剛好一樣，如果可以的話，只要讓 <img src="https://latex.codecogs.com/png.latex?G(x)"> 一定小於等於 0 就行了。Player B 有辦法辦到嗎? 我們解端點 0 和 1 時的不等式(這邊的 <img src="https://latex.codecogs.com/png.latex?G_2(x)"> 我使用沒有帶面積條件的版本 <img src="https://latex.codecogs.com/png.latex?%5Ceqref%7Beq:Gx-pieces%7D">): <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Bcases%7D%0A(P+B)y_1%5E*%20-%20B%20%5Cleq%200%20%5C%5C%0A(P+2B)%20-%20B(1+y_1%5E*)%20%5Cleq%20%5CBig(%20(P+2B)%20-%20B(1%20-%20z_1%5E*%20+%20z_2%5E*)%20%5CBig)%20%5C%5C%0A%5Cend%7Bcases%7D%0A"> 也就是 <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Bcases%7D%0A%5Cdisplaystyle%20y_1%5E*%20%5Cleq%20%5Cfrac%7BB%7D%7BP+B%7D%20%5C%5C%0A%5Cdisplaystyle%20z_2%5E*%20-%20z_1%5E*%20%5Cleq%20y_1%5E*%20%5C%5C%0A%5Cend%7Bcases%7D%20%5Ctag%7B13%7D%5Clabel%7Beq:inequalities-from-endpoints%7D%0A"> 假設可以取到，那麼 <img src="https://latex.codecogs.com/png.latex?G(x)%20%5Cleq%200"> 對所有 <img src="https://latex.codecogs.com/png.latex?x%20%5Cin%20%5B0,1%5D"> 都成立，這樣 Lagrangian 最大值就是 <img src="https://latex.codecogs.com/png.latex?J(x,y)"> 的積分值 <img src="https://latex.codecogs.com/png.latex?%5Ceqref%7Beq:Jxy-integral-with-constraints%7D">。還是帶有 <img src="https://latex.codecogs.com/png.latex?z_1%5E*,%20z_2%5E*">，所以我們要把它具體解出來。</p>
+<p>BTW, 如果 <img src="https://latex.codecogs.com/png.latex?G"> 讓出一點點正的部分給 <img src="https://latex.codecogs.com/png.latex?a_1(x)"> 可以因此壓低的 <img src="https://latex.codecogs.com/png.latex?J"> 的積分值的話，那我這樣就解錯了，但我們猜應該不會，這是這類 Indifference principle 不嚴謹的地方。而且根據該原則，其實上面兩個等號一定會成立，因為那是<strong>最</strong>讓 Player A 感受到無差異的條件: 所有 <img src="https://latex.codecogs.com/png.latex?G(x)=0"> 的地方 <img src="https://latex.codecogs.com/png.latex?a_1(x)"> 的取值都不影響結果。如果嚴格小於，那 Player A 在那裡的 <img src="https://latex.codecogs.com/png.latex?a_1(x)"> 一定會取 0。而直覺上 Player B 會在另個其他某個地方付出代價。這部分也不嚴謹。</p>
+<p>還是來算算看，根據面積條件 <img src="https://latex.codecogs.com/png.latex?%5Ceqref%7Beq:z1z2-equations%7D">，假設 <img src="https://latex.codecogs.com/png.latex?z_1%5E*%20=%20Bt">，那麼 <img src="https://latex.codecogs.com/png.latex?z_2%5E*%20=%201%20-%20(P+B)t">，所以 <img src="https://latex.codecogs.com/png.latex?z_2%5E*%20-%20z_1%5E*%20=%201%20-%20(P+2B)t">，而他最多是 <img src="https://latex.codecogs.com/png.latex?B/(P+B)">，所以 <img src="https://latex.codecogs.com/png.latex?%0At%20%5Cgeq%20%5Cfrac%7BP%7D%7B(P+B)(P+2B)%7D%0A"></p>
+<p>另一方面 <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cmathcal%7BL%7D_%7Bmax%7D%0A&amp;=%20%5Cfrac%7BP%7D%7B2%7D(1%20-%20z_1%5E*)%5E2%20+%20B(1%20-%20z_2%5E*)%5E2%20%5C%5C%0A&amp;=%20%5Cfrac%7BP%7D%7B2%7D(1%20-%20Bt)%5E2%20+%20B%5CBig((P+B)t%5CBig)%5E2%20%20%5C%5C%0A&amp;=%20%5Cfrac%7BP%7D%7B2%7D%20-%20PBt%20+%20%5CBig(%20B(P+B)%5E2%20+%20%5Cfrac%7BPB%5E2%7D%7B2%7D%20%5CBig)%20t%5E2%20%5C%5C%0A%5Cend%7Balign%7D%0A"> 是個開口向上的二次函數，因為 <img src="https://latex.codecogs.com/png.latex?t"> 是 Player B 控制的，要選 <img src="https://latex.codecogs.com/png.latex?t"> 讓它最小化。而其對稱軸位於 <img src="https://latex.codecogs.com/png.latex?%0At_%7B%5Cmin%7D%20=%20%5Cfrac%7BPB%7D%7B2%5CBig(%20B(P+B)%5E2%20+%20%5Cfrac%7BPB%5E2%7D%7B2%7D%20%5CBig)%7D%20=%20%5Cfrac%7BP%7D%7B(2P+B)(P+2B)%7D%20%3C%20%5Cfrac%7BP%7D%7B(P+B)(P+2B)%7D%20%5Cleq%20t%0A"> 所以最佳的 <img src="https://latex.codecogs.com/png.latex?t"> 果然是取到等號成立: <img src="https://latex.codecogs.com/png.latex?%0At%5E*%20=%20%5Cfrac%7BP%7D%7B(P+B)(P+2B)%7D%20%20%0A"> 所以 <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A&amp;z_1%5E*%20=%20%5Cfrac%7BBP%7D%7B(P+B)(P+2B)%7D%20,%20%5Cquad%20z_2%5E*%20=%20%5Cfrac%7B2B%7D%7BP+2B%7D%20%5C%5C%0A&amp;y_1%5E*%20=%20%5Cfrac%7BB%7D%7BP+B%7D%20%5C%5C%0A%5Cend%7Balign%7D%20%20%5Ctag%7B14%7D%5Clabel%7Beq:final-z1z2y1%7D%0A"></p>
+<p>以上推導應該還要再驗證，若不等式 <img src="https://latex.codecogs.com/png.latex?%5Ceqref%7Beq:inequalities-from-endpoints%7D"> 不成立，<img src="https://latex.codecogs.com/png.latex?a_1(x)%5Ccdot%20G(x)"> 所增加的量，會比 <img src="https://latex.codecogs.com/png.latex?J(x,y)"> 所減少的量還多。這樣才保證 Player B 成功使 Lagrangian 最小化。但其實不太可能，因為如此一來，Player A 就不是針對 Player B 打出最佳攻擊了。但在 Nash Equilibrium 時，雙方都是最佳防守狀態，也都是彼此的最佳攻擊。所以在 Nash Equilibrium 狀態下，以上推導是成立的。</p>
+<p>而 Player B 取這個 <img src="https://latex.codecogs.com/png.latex?t%5E*"> 時，Lagrangian 是多少呢? 因為上面 <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BL%7D_%7Bmax%7D"> 的式子中，<img src="https://latex.codecogs.com/png.latex?t=0"> 時會是 <img src="https://latex.codecogs.com/png.latex?P/2"> 也就是池底的一半，所以在 <img src="https://latex.codecogs.com/png.latex?%5B0,%202t_%7B%5Cmin%7D%5D"> 之間 <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BL%7D_%7Bmax%7D"> 會小於 <img src="https://latex.codecogs.com/png.latex?P/2">，超過 <img src="https://latex.codecogs.com/png.latex?2t_%7B%5Cmin%7D"> 後就會大於 <img src="https://latex.codecogs.com/png.latex?P/2">。而我們的 <img src="https://latex.codecogs.com/png.latex?t%5E*"> 是小於 <img src="https://latex.codecogs.com/png.latex?2t_%7B%5Cmin%7D"> 的! <img src="https://latex.codecogs.com/png.latex?%0At%5E*%20=%20%5Cfrac%7BP%7D%7B(P+B)(P+2B)%7D%20%3C%202t_%7B%5Cmin%7D%20=%20%5Cfrac%7B2P%7D%7B(2P+B)(P+2B)%7D%0A"> 所以 Player A 的整體期望值是小於池底一半的! 也就是<strong>先手劣勢</strong>。</p>
+<p>如此一來 Game Value 有了，具體來說是: <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A&amp;%5Cmax_%7Ba_1,%20a_2%7D%20%5Cmin_%7Bb_1,%20b_2%7D%20%5Cmathcal%7BL%7D(a_1,%20a_2,%20b_1,%20b_2)%20%20%20%20%5C%5C%0A&amp;%5Cquad%20=%20%5Cfrac%7BP%7D%7B2%7D%20-%20t%5E*%20B%20%5Cleft(P%20-%20%5Cfrac%7B(2P+B)(P+2B)%7D%7B2%7D%20t%5E*%20%5Cright)%20%20%20%20%5C%5C%0A&amp;%5Cquad%20=%20%5Cfrac%7BP%7D%7B2%7D%20-%20%5Cfrac%7BP%7D%7B(P+B)(P+2B)%7D%5Ccdot%20B%20%5Cleft(%20P%20-%20%5Cfrac%7BP(2P+B)%7D%7B2(P+B)%7D%20%5Cright)%20%5C%5C%0A&amp;%5Cquad%20=%20%5Cfrac%7BP%7D%7B2%7D%20-%20%5Cfrac%7BP%5E2B%5E2%7D%7B2(P+2B)(P+B)%5E2%7D%20%20%5Ctag%7B15%7D%5Clabel%7Beq:game-value-final%7D%0A%5Cend%7Balign%7D%0A"> 總結以上的解法，Player B 打出最佳防守 <img src="https://latex.codecogs.com/png.latex?%5Ceqref%7Beq:final-z1z2y1%7D"> 時，是不需要知道 Player A 的策略的，所以這並非 Player B 的最佳攻擊策略。Player A 此時被無差異化了，所以 <img src="https://latex.codecogs.com/png.latex?a_1(x)"> 在 <img src="https://latex.codecogs.com/png.latex?%5Bz_1%5E*,%20z_2%5E*%5D"> 是 <img src="https://latex.codecogs.com/png.latex?0">，其他地方可以任意。</p>
+<p>但若 Player B 可以根據 Player A 的策略來動態調整，那麼 Player B 的 <img src="https://latex.codecogs.com/png.latex?y_1%5E*,%20z_1%5E*,%20z_2%5E*"> 就會依照 <img src="https://latex.codecogs.com/png.latex?%5Ceqref%7Beq:z1z2-equations%7D"> 的面積比例去切分。此時 Player A 要如何選擇 <img src="https://latex.codecogs.com/png.latex?a_1(x)"> 才能最大化 Lagrangian?</p>
+<p>如果繼續沿用剛才的邏輯，當 Nash Equilibrium 時，Player B 的最佳防守策略 <img src="https://latex.codecogs.com/png.latex?%5Ceqref%7Beq:final-z1z2y1%7D"> 會是對 Player A 的最佳攻擊，所以其實 <img src="https://latex.codecogs.com/png.latex?%5Ceqref%7Beq:final-z1z2y1%7D"> 也剛好會把 <img src="https://latex.codecogs.com/png.latex?a_1(x)"> 依照 <img src="https://latex.codecogs.com/png.latex?%5Ceqref%7Beq:z1z2-equations%7D"> 的比例去切分。</p>
+<p>所以說，<img src="https://latex.codecogs.com/png.latex?(1-a_1(x))"> 在 <img src="https://latex.codecogs.com/png.latex?%5Bz_1%5E*,%20z_2%5E*%5D"> 部分的面積，比上 <img src="https://latex.codecogs.com/png.latex?%5Bz_2%5E*,%201%5D"> 部分的面積，會是 <img src="https://latex.codecogs.com/png.latex?(B%20+%20%5Cfrac%7BP%7D%7B2%7D)%20:%20%5Cfrac%7BP%7D%7B2%7D"> 的比例。而因為 <img src="https://latex.codecogs.com/png.latex?a_1(x)"> 在 <img src="https://latex.codecogs.com/png.latex?%5Bz_1%5E*,%20z_2%5E*%5D"> 是 <img src="https://latex.codecogs.com/png.latex?0">，所以 <img src="https://latex.codecogs.com/png.latex?(1-a_1(x))"> 在這區間的面積就是 <img src="https://latex.codecogs.com/png.latex?z_2%5E*%20-%20z_1%5E*">。所以剩下要算的就是 <img src="https://latex.codecogs.com/png.latex?a_1(x)"> 在 <img src="https://latex.codecogs.com/png.latex?%5Bz_2%5E*,%201%5D"> 的部分是多少。 <img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B1%20-%20z_2%5E*%20-%20A_%7Bvalue%7D%7D%7Bz_2%5E*%20-%20z_1%5E*%7D%20=%20%5Cfrac%7BP%7D%7B2B%20+%20P%7D%0A"> 帶 <img src="https://latex.codecogs.com/png.latex?%5Ceqref%7Beq:final-z1z2y1%7D"> 解出 <img src="https://latex.codecogs.com/png.latex?%0AA_%7Bvalue%7D%20=%20%5Cfrac%7BP%7D%7BP%20+%202B%7D%5Cfrac%7BP%7D%7BP+B%7D%0A"> 而 <img src="https://latex.codecogs.com/png.latex?a_1(x)"> 在 <img src="https://latex.codecogs.com/png.latex?%5B0,%20z_1%5E*%5D"> 的部分面積需要是 <img src="https://latex.codecogs.com/png.latex?A"> 的 <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7BB%7D%7BP+B%7D">， 所以 <img src="https://latex.codecogs.com/png.latex?%0AA_%7Bbluff%7D%20=%20%5Cfrac%7BB%7D%7BP+B%7D%20A_%7Bvalue%7D%20=%20%5Cfrac%7BP%5E2B%7D%7B(P+2B)(P+B)%5E2%7D%0A"></p>
+<div id="fig-final-a1-optimal-strategy" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/poker/images/lesson_7/a1_optimal.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;4: Final <img src="https://latex.codecogs.com/png.latex?a_1(x)"> Optimal Strategy</figcaption>
+</figure>
+</div>
+<p>現在算出了 <img src="https://latex.codecogs.com/png.latex?a_1(x)"> 在兩邊的面積是多少，那形狀呢? 剛才的 Lagrangian 似乎就被面積決定了，也沒有提到形狀的問題。沒錯，Lagrangian 只跟面積有關，所以形狀可以任意。</p>
+</section>
+<section id="結論" class="level2">
+<h2 class="anchored" data-anchor-id="結論">結論</h2>
+<!-- 
+
+### 走錯路 (可跳過) 
+
+現在帶回 Lagrangian，這邊回憶一下，從推導過程可以發現 其實 $G_2(x) = \int_0^1 J(x,y) dy$ ，所以我們把常數項合併回去給 $G_2$:
+$$
+\begin{align}
+\mathcal{L}(a_1) &= \int_0^1 \int_0^1 J(x,y) \, dy \, dx + \int_0^1 a_1(x) \cdot G(x) \, dx \\
+&= \int_0^1 a_1(x) \cdot G_1(x) \, dx + \int_0^1 (1 - a_1(x)) \cdot G_2(x) \, dx \\
+\end{align}
+$$
+我們又回到了簡潔的式子，第一項就是 Player A bet 的情況，第二項是 Player A check 的情況。
+
+交換一下順序，假設 $y_1^*$ 固定，$z_2^* = 1 - \frac{P+B}{B}z_1^*$。待會再回來解 $y_1^*, z_1^*$。
+
+根據 \eqref{eq:z1z2-equations}，在這兩個條件下，我們來看 $a_1(x)$ 要怎麼取可以最大化 Lagrangian。
+
+$$
+\begin{align}
+\mathcal{L}(a_1) 
+&=  \int_0^{y_1^*} a_1(x)\cdot \Big((P+B)y_1^* - B\Big) \, dx + \int_{y_1^*}^1 a_1(x) \cdot \Big( (P+2B)x - B(1+y_1^*) \Big) dx \\
+&\quad + \int_{z_1^*}^{z_2^*} (1 - a_1(x)) \cdot P(x - z_1^*) \, dx \\
+&\quad + \int_{z_2^*}^1 (1 - a_1(x)) \cdot \Big( (P+2B)(x+z_1^*) - 2B \Big) dx \\
+\end{align}
+$$
+神奇的是，Part 1 的 $y_1^*$ 自己消掉了，而 Part 2 的 $z_1^*$ 也自己消掉了。
+
+\begin{align}
+\mathcal{L}(a_1) 
+&=  y_1^* \cdot \underbrace{\left(
+  \int_0^{y_1^*} a_1(x)\cdot(P+B) \, dx - \int_{y_1^*}^1 a_1(x) \cdot B dx \\
+  \right)}_{=0} \\
+&\qquad + (P+2B) \cdot \int_{y_1^*}^1 a_1(x) \cdot x \, dx - B \int_{0}^1 a_1(x) \, dx \\
+&\qquad + z_1^* \cdot \underbrace{\left( 
+  \int_{z_1^*}^{z_2^*} (1 - a_1(x)) \cdot (-P) \, dx + \int_{z_2^*}^1 (1 - a_1(x)) \cdot (P+2B) \, dx 
+  \right)}_{=0} \\
+&\qquad + (2P+2B) \cdot \int_{z_1^*}^1 (1 - a_1(x)) \cdot x \, dx - 2B \int_{z_2^*}^1 (1 - a_1(x)) \, dx \\
+
+&= (P+2B) \cdot \int_{y_1^*}^1 a_1(x) \cdot x \, dx - B \int_{0}^1 a_1(x) \, dx \\
+&\qquad + P \cdot \int_{z_1^*}^{z_2^*} (1 - a_1(x)) \cdot x \, dx + (P+2B) \cdot \int_{z_2^*}^1 (1 - a_1(x)) \cdot x \, dx - 2B \int_{z_2^*}^1 (1 - a_1(x)) \, dx  \\
+
+&= \underbrace{(P+2B) \cdot \int_{y_1^*}^{z_2^*} a_1(x) \cdot x \, dx - P \cdot \int_{z_1^*}^{z_2^*} a_1(x) \cdot x \, dx}_{a_1(x)\cdot x \text{ related}} \\
+&\qquad - B \int_0^1 a_1(x) \, dx + P\int_{z_1^*}^{z_2^*} x \, dx + (P+2B) \int_{z_2^*}^1 x \, dx - 2B \int_{z_2^*}^1 (1-a_1(x)) dx  \\
+\end{align}
+
+
+一番整理後還算是乾淨。直覺上 $y_1^*$ 應該在 $z_1^*$ 和 $z_2^*$ 之間，但我們來確認一下。
+
+這裡變數有點多，先這樣想，這些 $y_1^*, z_1^*, z_2^*$ 都是限制 $a_1(x)$ 或者 $1-a_1(x)$ 面積積分的條件，所以當我們把 $[0,1]$ 區間切成四個部分，如下圖所示 ，我們假設 $A_1, A_2, A_3, A_4$ 是固定的，且滿足面積的條件，那麼這固定的面積無論在這範圍內怎麼動，都依然滿足面積的限制。 
+
+![$a_1(x)$ Area Division. Schematic Diagram](images/lesson_7/a1_area.png){#fig-a1-area}
+
+### 以下部分開始算錯 ... 
+
+在面積可以在自己的那一格區域亂流動的情況下， $a_1(x)\cdot x$ 這一項就會有影響了，而 Player A 要選如何最大化 Lagrangian。來看看含有這的兩項
+$$
+(P+2B) \cdot \int_{y_1^*}^1 a_1(x) \cdot x \, dx - 2(P+B) \cdot \int_{z_1^*}^1 a_1(x) \cdot x \, dx
+$$
+
+* Case 1: 如果 $z_1^* < y_1^*$ 的話，負的項可以把正的項完全吃掉:
+  $$
+  -(P+2B) \cdot \int_{z_1^*}^{y_1^*} a_1(x) \cdot x \, dx - P \cdot \int_{z_1^*}^1 a_1(x) \cdot x \, dx, \qquad \text{, if } z_1^* < y_1^*
+  $$
+  因為 $a_1(x)$ 要最大化 Lagrangian，所以在區域 $[z_1^*, 1]$ 之間的面積，都要在該區域內盡量往左邊靠，而在區域 $[0, z_1^*]$ 之間則是任意，跟 Lagrangian 無關。
+
+* Case 2: 若是 $y_1^* \leq z_1^*$ 的話，就有正有負:
+  $$
+  (P+2B) \cdot \int_{y_1^*}^{z_1^*} a_1(x) \cdot x \, dx - P \cdot \int_{z_1^*}^1 a_1(x) \cdot x \, dx, \qquad \text{, if } y_1^* \leq z_1^*
+  $$
+  類似地，在區域 $[y_1^*, 1]$ 之間的面積要往右邊靠，在區域 $[z_1^*, 1]$ 之間的面積要往左邊靠，而在區域 $[0, y_1^*]$ 之間任意。
+
+![$a_1(x)$ Area Tendency. Schematic Diagram](images/lesson_7/two_cases_lean_tendency.png){#fig-a1-lean-tendency}
+
+**先假設是 Case 1:**
+
+那麼我們目前有的條件是:
+$$
+\begin{align}
+\int_0^{z_1^*} a_1(x) dx = A_1 &\qquad\text{, } \int_0^{z_1^*} (1-a_1(x)) dx = C_1  \\
+\int_{z_1^*}^{y_1^*} a_1(x) dx = A_2 &\qquad\text{, } \int_{z_1^*}^{y_1^*} (1-a_1(x)) dx = C_2  \\
+\int_{y_1^*}^{z_2^*} a_1(x) dx = A_3 &\qquad\text{, } \int_{y_1^*}^{z_2^*} (1-a_1(x)) dx = C_3  \\
+\int_{z_2^*}^1 a_1(x) dx = A_4 &\qquad\text{, } \int_{z_2^*}^1 (1-a_1(x)) dx = C_4  \\
+\frac{A_1 + A_2}{A_3 + A_4} &= \frac{B}{P+B}  \tag{4'}\label{eq:area-ratio-a} \\
+\frac{C_2 + C_3}{C_4} &= \frac{2B + P}{P}   \tag{8-1}\label{eq:area-ratio-c} \\
+\frac{A_1 + C_1}{A_4+C_4} &= \frac{B}{P+B}   \tag{8-2}\label{eq:area-ratio-ac} \\
+\sum_{i=1}^4 A_i + C_i &= 1  \tag{Area Total}
+\end{align}
+$$
+
+這邊的重點是他們變成了齊次的形式，總和是 $1$。
+
+
+
+我們來看 Lagrangian，因為是 Case 1，所以:
+$$
+\begin{aligned}
+\mathcal{L}(a_1) 
+&= - (P+2B)  \int_{z_1^*}^{y_1^*} a_1(x)\cdot x \, dx - P \int_{z_1^*}^{1} a_1(x)\cdot x \, dx  \\
+&\qquad -B \int_0^1 a_1(x) \, dx + 2(P+B) \cdot \frac{1-(z_1^*)^2}{2} -2B \cdot \int_{z_2^*}^1 (1-a_1(x)) \, dx  \\
+\end{aligned}
+$$
+根據剛才的傾向分析，我們可以算出 $a_1(x)\cdot x$ 的積分項，比方說因為 $a_1(x)$ 在區域 $[z_1^*, y_1^*]$ 是 $\mathbb{1}_{z_1^*\leq x\leq z_1^*+A_2}$ 等等。
+
+所以我們把積分算出來，然後盡量用 $A_i, C_i$ 來表示:
+$$
+\begin{aligned}
+\mathcal{L}(a_1) 
+&= - (P+2B) \frac{(z_1^*+A_2)^2 - (z_1^*)^2}{2}  \\
+&\qquad - P \frac{(z_1^*+A_2)^2 - (z_1^*)^2 + (y_1^*+A_3)^2 - (y_1^*)^2 + (z_2^*+A_4)^2 - (z_2^*)^2 }{2}  \\
+&\qquad - B (A_1 + A_2 + A_3 + A_4) + 2(P+B) \cdot \frac{1-(z_1^*)^2}{2} -2B\cdot C_4 \\
+\end{aligned}
+$$
+若將 $P, B$ 視為常數，$A_i, C_i$ 視為變數，我們可以看出有一次式和二次式的部分。但因為有總合為1的條件，所以其實一次或二次並非那麼 well-defined。
+
+利用
+$$
+\begin{aligned}
+&z_1^* = A_1 + C_1, \\
+&y_1^* = A_1 + A_2 + C_1 + C_2, \\
+&z_2^* = A_1 + A_2 + A_3 + C_1 + C_2 + C_3, \\
+\end{aligned}
+$$
+將這些變數代換掉，
+
+$$
+\begin{aligned}
+\mathcal{L}(a_1) 
+&= - (2P+2B) \frac{(z_1^*+A_2)^2 - (z_1^*)^2}{2} + 2(P+B) \cdot \frac{1-(z_1^*)^2}{2}   \\
+&\qquad - P \frac{(y_1^*+A_3)^2 - (y_1^*)^2 + (z_2^*+A_4)^2 - (z_2^*)^2 }{2}  \\
+&\qquad - B (A_1 + A_2 + A_3 + A_4 + 2C_4)  \\
+&= (P+B)\cdot (1 - (A_1 + C_1 + A_2)^2) \\
+&\qquad - P \cdot \left(A_3 \Big(A_1+A_2+C_1+C_2+\frac{A_3}{2}\Big) + A_4 \Big(A_1+A_2+A_3+C_1+C_2+C_3+\frac{A_4}{2}\Big) \right)  \\
+&\qquad - B (A_1 + A_2 + A_3 + A_4 + 2C_4)  \\
+\end{aligned}
+$$
+我們來試著在限制條件 \eqref{eq:area-ratio-a}, \eqref{eq:area-ratio-c}, \eqref{eq:area-ratio-ac} 下進行變分，發現當做以下的微小變動時，限制仍然滿足
+$$
+\begin{aligned}
+(A_1, A_2, A_3, A_4, C_1, C_2, C_3, C_4) &\rightarrow (A_1, A_2, A_3, A_4, C_1, C_2-\varepsilon, C_3+\varepsilon, C_4) \\
+\mathcal{L} &\rightarrow \mathcal{L} + P \cdot A_3 \cdot \varepsilon \\
+\end{aligned}
+$$
+所以若 $A_3 > 0$，$C_2$ 必須為 $0$ 才能最大化 Lagrangian。或者說 $A_3 = 0$。無論如何，我們得到
+$$
+A_3 C_2 = 0  
+$$
+
+使用變數代換 $A_1+A_2+C_1=\alpha$，以及 $A_3 + A_4 = \beta$: 
+$$
+\begin{aligned}
+\mathcal{L}(a_1) 
+&= (P+B)\cdot (1 - \alpha^2) \\
+&\qquad - P \cdot \left( \cancelto{0}{A_3 C_2} + A_3 \alpha +\frac{(A_3+A_4)^2}{2} + A_4 (\alpha+C_4\cdot\frac{2B+P}{P}) \right)  \\
+&\qquad - B (A_1 + A_2 + A_3 + A_4 + 2C_4)  \\
+&= (P+B)\cdot (1 - \alpha^2) \\
+&\qquad - P \cdot \left( A_4 C_4\cdot\frac{2B+P}{P} + (A_3+A_4) \alpha +\frac{(A_3+A_4)^2}{2} \right)  \\
+&\qquad - B ((A_3 + A_4)\cdot\frac{P+2B}{P+B} + 2C_4)  \\
+&= (P+B)\cdot (1 - \alpha^2) \\
+&\qquad - P \cdot \left(A_4 C_4\cdot\frac{2B+P}{P} + \beta\alpha +\frac{\beta^2}{2} \right)  \\
+&\qquad - B (\beta \cdot\frac{P+2B}{P+B} + 2C_4)  \\
+\end{aligned}
+$$
+
+接對 $A_i$ 的部分做一個高端變分操作，同樣保持面積比例的等式，而且 $\alpha$ 和 $\beta$ 在這變換下也不變:
+$$
+\begin{aligned}
+(A_1, A_2, A_3, A_4)
+&\rightarrow (A_1-(P+B)\varepsilon, A_2+(P+B)\varepsilon, A_3+B\varepsilon, A_4-B\varepsilon) \\
+\mathcal{L} &\rightarrow \mathcal{L} + C_4 \cdot (P+2B) \cdot \varepsilon \\
+\end{aligned}
+$$
+因此，若 $C_4 > 0$，則 $A_1$ 或 $A_4$ 必須為 $0$ 否則就有空間讓 Lagrangian 變大。
+也就是說，
+$$
+A_1 A_4 C_4 = 0  
+$$
+由總面積為 1 的條件，
+$$
+1 = \alpha + \beta + C_4 + C_4\cdot\frac{P+2B}{P}
+$$
+將 $C_4 = \frac{P}{2(P+B)}(1 - \alpha - \beta)$ 帶回 Lagrangian:
+$$
+\begin{aligned}
+\mathcal{L}(a_1) 
+&= -(P+B) \alpha^2 + (P+B) \\
+&\qquad - \frac{P}{2}\beta^2 - P\alpha\beta - A_4 (2B+P) \cdot \frac{P}{2(P+B)}(1 - \alpha - \beta) \\
+&\qquad - \frac{B(P+2B)}{P+B} \beta - B \cdot \frac{P}{P+B}(1 - \alpha - \beta)  \\
+&= -(P+B) \alpha^2 - \frac{P}{2}\beta^2 - P\alpha\beta \\
+&\qquad - \left( \frac{A_4\cdot (PB+\frac{P^2}{2}) + PB }{P+B}  \right) (1 - \alpha - \beta) - \frac{B(P+2B)}{P+B} \beta + (P+B)  \\
+\end{aligned}
+$$
+
+這邊的 $A_4$ 可以視為自由變數，因為我們現在的所有 8 個變數變成 三個變數: $\alpha, \beta, A_4$，為此，我們應該將其他所有都用這三個變數表示出來。
+$$
+\begin{aligned}
+C_4 &= \frac{P}{2(P+B)}(1 - \alpha - \beta) \\
+C_1 &= \alpha - \frac{B}{P+B}\beta \\
+A_3 &= \beta - A_4 \\
+A_1 &= \frac{B}{P+B}(A_4+C_4) - C_1 = \frac{B}{P+B} \left( A_4 + \frac{P}{2(P+B)}(1 - \alpha - \beta) \right) - \left( \alpha - \frac{B}{P+B}\beta \right) \\
+A_2 &= \frac{B}{P+B}\beta - A_1 = \frac{B}{P+B}\beta - \left[ \frac{B}{P+B} \left( A_4 + \frac{P}{2(P+B)}(1 - \alpha - \beta) \right) - \left( \alpha - \frac{B}{P+B}\beta \right) \right] \\
+&\qquad\qquad\qquad\qquad = \alpha - \frac{B}{P+B} A_4 - \frac{BP}{2(P+B)^2}(1 - \alpha - \beta) \\
+C_2 + C_3 &= C_4 \cdot \frac{2B + P}{P} = \frac{(2B + P)}{2(P+B)}(1 - \alpha - \beta) \\
+A_3C_2 &= 0 \\
+\end{aligned}
+$$
+確實可以表示出來，但需要在 0 和 1 之間，變成爆出了一大堆不等式限制。
+
+
+ -->
 
 
 </section>
@@ -319,7 +495,6 @@ Figure&nbsp;2: <img src="https://latex.codecogs.com/png.latex?J(x,y)"> Integral 
   <dc:creator>Tai-Ning Liao</dc:creator>
   <link>https://your-website-url.example.com/posts/poker/lesson_6_comparison.html</link>
   <description><![CDATA[ 
-
 
 
 
@@ -674,7 +849,6 @@ Figure&nbsp;5: Polarized Range
 
 
 
-
 <p>來延續上一篇的設定，假設 A 跟 B 玩 Seven-card stud， <img src="https://latex.codecogs.com/png.latex?40-80"> 元有限注，池底有 <img src="https://latex.codecogs.com/png.latex?P%20=%20100"> 元。</p>
 <p>現在來到最後一輪 River 下注(已經發了最後一張牌)，前六張都是開的，最後一張只有自己知道。</p>
 <ul>
@@ -914,7 +1088,6 @@ Figure&nbsp;3: 2D Payoff Surface - Heatmap
 
 
 
-
 <p>在德州撲克中，有三種不確定性來源:</p>
 <ul>
 <li>你不知道對手的底牌是什麼</li>
@@ -1091,7 +1264,6 @@ Figure&nbsp;1: Seven-card stud
 
 
 
-
 <p>小時候就學過無窮等比級數:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Csum_%7Bn=0%7D%5E%7B%5Cinfty%7D%20r%5En%20=%20%5Cfrac%7B1%7D%7B1-r%7D,%20%5Cquad%20%7Cr%7C%3C1%0A"> 當時候胡思亂想，想說指數部分如果改成平方怎麼算? <img src="https://latex.codecogs.com/png.latex?%0A%5Csum_%7Bn=0%7D%5E%7B%5Cinfty%7D%20r%5E%7Bn%5E2%7D%20=%20?%0A"> 嗯… 當然是完全不會算，沒想到在大學的殿堂裡還會再次遇見他… <strong>Poisson Summation Formula (PSF)</strong>。</p>
 <p>這真的是數學中最奇怪又深奧的恆等式。</p>
@@ -1169,7 +1341,6 @@ Figure&nbsp;1: Seven-card stud
   <dc:creator>Tai-Ning Liao</dc:creator>
   <link>https://your-website-url.example.com/posts/normal-distribution/day_8.html</link>
   <description><![CDATA[ 
-
 
 
 
@@ -1255,7 +1426,6 @@ Figure&nbsp;1: Seven-card stud
   <dc:creator>Tai-Ning Liao</dc:creator>
   <link>https://your-website-url.example.com/posts/poker/lesson_3_count.html</link>
   <description><![CDATA[ 
-
 
 
 
@@ -1421,7 +1591,6 @@ font-style: inherit;">// 繪製直方圖</span></span>
 <span id="cb1-107">{</span>
 <span id="cb1-108">  <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">const</span> div <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> DOM<span class="op" style="color: #5E5E5E;
@@ -1435,7 +1604,6 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb1-109">  <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">const</span> totalCombos <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -1469,7 +1637,6 @@ font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">map</span>(d <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">=&gt;</span> d<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
@@ -1487,7 +1654,6 @@ font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">map</span>(d <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">=&gt;</span> (d<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
@@ -1524,7 +1690,6 @@ font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">map</span>(d <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">=&gt;</span> <span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">`</span><span class="sc" style="color: #5E5E5E;
@@ -1672,14 +1837,12 @@ font-style: inherit;">staticPlot</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">true</span></span>
 <span id="cb1-131">  })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb1-132">  <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">return</span> div<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
@@ -1896,7 +2059,6 @@ font-style: inherit;">// 繪製直方圖</span></span>
 <span id="cb2-225">{</span>
 <span id="cb2-226">  <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">const</span> div <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> DOM<span class="op" style="color: #5E5E5E;
@@ -1910,7 +2072,6 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-227">  <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">const</span> totalCombos <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -1944,7 +2105,6 @@ font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">map</span>(d <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">=&gt;</span> d<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
@@ -1962,7 +2122,6 @@ font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">map</span>(d <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">=&gt;</span> (d<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
@@ -1999,7 +2158,6 @@ font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">map</span>(d <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">=&gt;</span> <span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">`</span><span class="sc" style="color: #5E5E5E;
@@ -2147,14 +2305,12 @@ font-style: inherit;">staticPlot</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">true</span></span>
 <span id="cb2-249">  })<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-250">  <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">return</span> div<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
@@ -2277,7 +2433,6 @@ Figure&nbsp;2: 德州撲克 (7選5) 手牌組合數量直方圖
   <dc:creator>Tai-Ning Liao</dc:creator>
   <link>https://your-website-url.example.com/posts/poker/lesson_2.html</link>
   <description><![CDATA[ 
-
 
 
 
@@ -2420,7 +2575,6 @@ Figure&nbsp;3: Player A checks on the River
 
 
 
-
 <p>先來談談賭博中最小的一步，要 <strong>繼續遊戲 (call)</strong> 還是 <strong>忍痛放棄 (fold)</strong>。</p>
 <p>所謂的 Pot Odds，指的是你為了繼續參與遊戲 (call 或 raise) 所需要投入的金額，和你可能贏得的彩池 (pot) 之間的比例。</p>
 <p>舉例來說，假設彩池中有 100 美元，而你需要投入 20 美元來繼續參與遊戲，那麼你的 Pot Odds 就是 20:100，或者簡化為 1:5。</p>
@@ -2458,7 +2612,6 @@ Figure&nbsp;1: Poker Pot Odds
   <dc:creator>Tai-Ning Liao</dc:creator>
   <link>https://your-website-url.example.com/posts/normal-distribution/day_7.html</link>
   <description><![CDATA[ 
-
 
 
 
@@ -2507,7 +2660,6 @@ Figure&nbsp;1: Poker Pot Odds
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="43" data-source-offset="-45" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 42;"><span id="cb1-43"><span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">He</span>(n<span class="op" style="color: #5E5E5E;
@@ -2515,14 +2667,12 @@ background-color: null;
 font-style: inherit;">,</span> x) {</span>
 <span id="cb1-44">  <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">if</span> (n <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">===</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>) <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">return</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
@@ -2530,27 +2680,23 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb1-45">  <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">if</span> (n <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">===</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>) <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">return</span> x<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb1-46">  <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">if</span> (n <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">===</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span>) <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">return</span> x<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">**</span><span class="dv" style="color: #AD0000;
@@ -2564,14 +2710,12 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb1-47">  <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">if</span> (n <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">===</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3</span>) <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">return</span> x<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">**</span><span class="dv" style="color: #AD0000;
@@ -2587,14 +2731,12 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb1-48">  <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">if</span> (n <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">===</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">4</span>) <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">return</span> x<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">**</span><span class="dv" style="color: #AD0000;
@@ -2618,7 +2760,6 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb1-49">  <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">return</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span><span class="op" style="color: #5E5E5E;
@@ -2634,7 +2775,6 @@ background-color: null;
 font-style: inherit;">=</span> {</span>
 <span id="cb1-54">  <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">const</span> points <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> []<span class="op" style="color: #5E5E5E;
@@ -2642,10 +2782,8 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb1-55">  <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">for</span> (<span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">let</span> x <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="op" style="color: #5E5E5E;
@@ -2689,7 +2827,6 @@ font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">forEach</span>(n <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
 <span id="cb1-57">      points<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2738,7 +2875,6 @@ font-style: inherit;">;</span></span>
 <span id="cb1-63">  }</span>
 <span id="cb1-64">  <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">return</span> points<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
@@ -2761,7 +2897,6 @@ font-style: inherit;">grid</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
@@ -2771,7 +2906,6 @@ font-style: inherit;">caption</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">null</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="co" style="color: #5E5E5E;
@@ -2814,7 +2948,6 @@ font-style: inherit;">legend</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">true</span> }<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> <span class="co" style="color: #5E5E5E;
@@ -2982,7 +3115,6 @@ Figure&nbsp;1: 機率學家的 Hermite 多項式 (He₀ - He₄)
   <dc:creator>Tai-Ning Liao</dc:creator>
   <link>https://your-website-url.example.com/posts/normal-distribution/day_6.html</link>
   <description><![CDATA[ 
-
 
 
 
@@ -3164,7 +3296,6 @@ font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">map</span>(p <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">=&gt;</span> p <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">*</span> n)</span>
@@ -3178,7 +3309,6 @@ background-color: null;
 font-style: inherit;">// Recursive function to get partitions (compositions of integer n)</span></span>
 <span id="cb2-170"><span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">getCompositions</span>(target<span class="op" style="color: #5E5E5E;
@@ -3186,20 +3316,17 @@ background-color: null;
 font-style: inherit;">,</span> bins) {</span>
 <span id="cb2-171">  <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">if</span> (bins <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">===</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>) <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">return</span> [[target]]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-172">  <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">const</span> results <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> []<span class="op" style="color: #5E5E5E;
@@ -3207,10 +3334,8 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-173">  <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">for</span> (<span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">let</span> i <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -3226,7 +3351,6 @@ background-color: null;
 font-style: inherit;">++</span>) {</span>
 <span id="cb2-174">    <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">const</span> sub <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
@@ -3248,7 +3372,6 @@ font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">forEach</span>(s <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">=&gt;</span> results<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
@@ -3263,7 +3386,6 @@ font-style: inherit;">;</span></span>
 <span id="cb2-176">  }</span>
 <span id="cb2-177">  <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">return</span> results<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
@@ -3288,30 +3410,25 @@ font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">map</span>(counts <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
 <span id="cb2-184">  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// Factorial helper</span></span>
 <span id="cb2-185">  <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">const</span> fact <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> (num) <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
 <span id="cb2-186">    <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">if</span> (num <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&lt;=</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>) <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">return</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
@@ -3319,7 +3436,6 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-187">    <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">let</span> r <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -3329,10 +3445,8 @@ background-color: null;
 font-style: inherit;">;</span> </span>
 <span id="cb2-188">    <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">for</span>(<span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">let</span> i<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
@@ -3352,7 +3466,6 @@ background-color: null;
 font-style: inherit;">;</span> </span>
 <span id="cb2-189">    <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">return</span> r<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span></span>
@@ -3363,7 +3476,6 @@ background-color: null;
 font-style: inherit;">// Multinomial Prob</span></span>
 <span id="cb2-193">  <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">let</span> denom <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -3373,7 +3485,6 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-194">  <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">let</span> probTerm <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -3389,7 +3500,6 @@ font-style: inherit;">forEach</span>((c<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> i) <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
 <span id="cb2-196">    denom <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -3416,7 +3526,6 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-199">  <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">const</span> p <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> (<span class="fu" style="color: #4758AB;
@@ -3434,7 +3543,6 @@ background-color: null;
 font-style: inherit;">// Chi Sq Statistic</span></span>
 <span id="cb2-202">  <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">let</span> q <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -3450,7 +3558,6 @@ font-style: inherit;">forEach</span>((c<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> i) <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
 <span id="cb2-204">    q <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -3477,7 +3584,6 @@ font-style: inherit;">;</span></span>
 <span id="cb2-206">  </span>
 <span id="cb2-207">  <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">return</span> {<span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">q</span><span class="op" style="color: #5E5E5E;
@@ -3505,12 +3611,10 @@ background-color: null;
 font-style: inherit;">// A. Group by Q (sum probabilities for identical Q statistics)</span></span>
 <span id="cb2-214">  <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">const</span> map <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">new</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">Map</span>()<span class="op" style="color: #5E5E5E;
@@ -3522,11 +3626,9 @@ font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">forEach</span>(d <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
 <span id="cb2-216">    <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">const</span> key <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> d<span class="op" style="color: #5E5E5E;
@@ -3544,7 +3646,6 @@ background-color: null;
 font-style: inherit;">;</span> </span>
 <span id="cb2-217">    <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">const</span> existing <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> map<span class="op" style="color: #5E5E5E;
@@ -3582,7 +3683,6 @@ background-color: null;
 font-style: inherit;">// B. Sort by Q</span></span>
 <span id="cb2-222">  <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">let</span> sorted <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
@@ -3597,7 +3697,6 @@ font-style: inherit;">,</span> ([q<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span> p]) <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">=&gt;</span> ({<span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">q</span><span class="op" style="color: #5E5E5E;
@@ -3618,7 +3717,6 @@ font-style: inherit;">sort</span>((a<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span>b) <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">=&gt;</span> a<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
@@ -3638,7 +3736,6 @@ background-color: null;
 font-style: inherit;">// C. Calculate Cumulative Sum</span></span>
 <span id="cb2-225">  <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">let</span> cumSum <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -3648,14 +3745,12 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-226">  <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">return</span> sorted<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">map</span>(d <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">=&gt;</span> {</span>
 <span id="cb2-227">    cumSum <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -3671,7 +3766,6 @@ background-color: null;
 font-style: inherit;">// Log scale fix: If Q is exactly 0, bump it to 0.01 so it shows up on log axis</span></span>
 <span id="cb2-229">    <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">const</span> plotQ <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> d<span class="op" style="color: #5E5E5E;
@@ -3697,7 +3791,6 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-230">    <span class="cf" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">return</span> {</span>
 <span id="cb2-231">      <span class="dt" style="color: #AD0000;
 background-color: null;
@@ -3760,7 +3853,6 @@ font-style: inherit;">grid</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">true</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
@@ -3803,7 +3895,6 @@ font-style: inherit;">max</span>(groupedCDF<span class="op" style="color: #5E5E5
 background-color: null;
 font-style: inherit;">,</span> d <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">=&gt;</span> d<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
@@ -3937,7 +4028,6 @@ font-style: inherit;">title</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span> d <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">=&gt;</span> <span class="vs" style="color: #20794D;
 background-color: null;
 font-style: inherit;">`Q: </span><span class="sc" style="color: #5E5E5E;
@@ -4003,7 +4093,6 @@ font-style: inherit;">max</span>(groupedCDF<span class="op" style="color: #5E5E5
 background-color: null;
 font-style: inherit;">,</span> d <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">=&gt;</span> d<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.</span><span class="at" style="color: #657422;
@@ -4022,7 +4111,6 @@ font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">map</span>(x <span class="kw" style="color: #003B4F;
 background-color: null;
-font-weight: bold;
 font-style: inherit;">=&gt;</span> ({<span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">x</span><span class="op" style="color: #5E5E5E;
@@ -4245,7 +4333,6 @@ font-style: inherit;">"gray"</span>})</span>
 
 
 
-
 <p>今天來講個輕鬆的小主題：<strong>Cumulant</strong>。</p>
 <p>對於一個隨機變數 <img src="https://latex.codecogs.com/png.latex?X">，我們通常想知道平均跟標準差。有時候我們甚至會想知道更高階的資訊，例如偏度 (skewness) 跟峰度 (kurtosis)，這些都可以透過動差 (moment) 來描述。</p>
 <section id="cumulant-generating-function" class="level3">
@@ -4402,7 +4489,6 @@ Lukacs, Eugene. 1970. <em>Characteristic Functions</em>. 2nd ed. Griffin.
 
 
 
-
 <p>今天來講統計學中「參數估計」(Parameter Estimation) 一個非常優雅的概念：<strong>充分統計量 (Sufficient Statistic)</strong>。</p>
 <p>假設我們從一個分佈 i.i.d. 取樣了 <img src="https://latex.codecogs.com/png.latex?n"> 個數據點： <img src="https://latex.codecogs.com/png.latex?%0AX_1,%20%5Cldots,%20X_n%20%5Csim%20P_%5Ctheta%0A"> 這個分佈包含一個未知的參數 <img src="https://latex.codecogs.com/png.latex?%5Ctheta">。原則上我們想估計這個 <img src="https://latex.codecogs.com/png.latex?%5Ctheta">（例如使用 Maximum Likelihood Estimation）。但在進行複雜估計之前，我們先思考一個問題：<strong>有沒有辦法把這 <img src="https://latex.codecogs.com/png.latex?n"> 個數據點「壓縮」成一個更小的統計量 (statistic)，同時完全不損失任何關於 <img src="https://latex.codecogs.com/png.latex?%5Ctheta"> 的資訊？</strong> 這就是 Sufficient Statistic 的核心精神。</p>
 <section id="從丟硬幣開始直觀的推導" class="level3">
@@ -4476,7 +4562,7 @@ Lukacs, Eugene. 1970. <em>Characteristic Functions</em>. 2nd ed. Griffin.
 <item>
   <title>最短的向量</title>
   <dc:creator>Tai-Ning Liao</dc:creator>
-  <link>https://your-website-url.example.com/posts/2025-1116-shortest_vector/</link>
+  <link>https://your-website-url.example.com/posts/2025-1116-shortest_vector/index.html</link>
   <description><![CDATA[ 
 
 
@@ -4496,15 +4582,14 @@ Lukacs, Eugene. 1970. <em>Characteristic Functions</em>. 2nd ed. Griffin.
   <category>Cryptography</category>
   <category>NP-Reduction</category>
   <category>Linear Algebra</category>
-  <guid>https://your-website-url.example.com/posts/2025-1116-shortest_vector/</guid>
+  <guid>https://your-website-url.example.com/posts/2025-1116-shortest_vector/index.html</guid>
   <pubDate>Sat, 15 Nov 2025 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>10 Types of Common Distributions</title>
   <dc:creator>Tai-Ning Liao</dc:creator>
-  <link>https://your-website-url.example.com/posts/2025-1114-distribution_10/</link>
+  <link>https://your-website-url.example.com/posts/2025-1114-distribution_10/index.html</link>
   <description><![CDATA[ 
-
 
 
 
@@ -4774,7 +4859,7 @@ Table&nbsp;2: My Discrete Distribution Table
  ]]></description>
   <category>statistic</category>
   <category>Cheat Sheet</category>
-  <guid>https://your-website-url.example.com/posts/2025-1114-distribution_10/</guid>
+  <guid>https://your-website-url.example.com/posts/2025-1114-distribution_10/index.html</guid>
   <pubDate>Thu, 13 Nov 2025 16:00:00 GMT</pubDate>
 </item>
 <item>
@@ -4782,7 +4867,6 @@ Table&nbsp;2: My Discrete Distribution Table
   <dc:creator>Tai-Ning Liao</dc:creator>
   <link>https://your-website-url.example.com/posts/normal-distribution/day_3.html</link>
   <description><![CDATA[ 
-
 
 
 
@@ -4836,7 +4920,6 @@ Table&nbsp;2: My Discrete Distribution Table
   <dc:creator>Tai-Ning Liao</dc:creator>
   <link>https://your-website-url.example.com/posts/normal-distribution/day_2.html</link>
   <description><![CDATA[ 
-
 
 
 
@@ -4999,9 +5082,8 @@ Table&nbsp;2: My Discrete Distribution Table
 <item>
   <title>Conjugate Prior</title>
   <dc:creator>Tai-Ning Liao</dc:creator>
-  <link>https://your-website-url.example.com/posts/2025-1112-conjugacy_prior/</link>
+  <link>https://your-website-url.example.com/posts/2025-1112-conjugacy_prior/index.html</link>
   <description><![CDATA[ 
-
 
 
 
@@ -5305,13 +5387,13 @@ Table&nbsp;2: My Discrete Distribution Table
 
  ]]></description>
   <category>statistic</category>
-  <guid>https://your-website-url.example.com/posts/2025-1112-conjugacy_prior/</guid>
+  <guid>https://your-website-url.example.com/posts/2025-1112-conjugacy_prior/index.html</guid>
   <pubDate>Tue, 11 Nov 2025 16:00:00 GMT</pubDate>
 </item>
 <item>
   <title>聊聊 Error Correcting Code (ECC) 的基石：Linear Code</title>
   <dc:creator>Tai-Ning Liao</dc:creator>
-  <link>https://your-website-url.example.com/posts/2025-1112-linear_code/</link>
+  <link>https://your-website-url.example.com/posts/2025-1112-linear_code/index.html</link>
   <description><![CDATA[ 
 
 
@@ -5553,7 +5635,7 @@ Table&nbsp;2: My Discrete Distribution Table
  ]]></description>
   <category>Cryptography</category>
   <category>Linear Algebra</category>
-  <guid>https://your-website-url.example.com/posts/2025-1112-linear_code/</guid>
+  <guid>https://your-website-url.example.com/posts/2025-1112-linear_code/index.html</guid>
   <pubDate>Tue, 11 Nov 2025 16:00:00 GMT</pubDate>
 </item>
 <item>
@@ -5561,7 +5643,6 @@ Table&nbsp;2: My Discrete Distribution Table
   <dc:creator>Tai-Ning Liao</dc:creator>
   <link>https://your-website-url.example.com/posts/normal-distribution/day_1.html</link>
   <description><![CDATA[ 
-
 
 
 

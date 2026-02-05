@@ -1,4 +1,10 @@
 /* css styles */
+
+p {
+  line-height: 1.8; /* 預設通常是 1.5 或 1.6，調大一點 */
+  margin-bottom: 1.2em;
+}
+
 /* 1. 防止整個頁面被撐開 (全域設定) */
 html, body {
   overflow-x: hidden !important; /* 禁止整個網頁出現左右捲軸 */
@@ -20,6 +26,9 @@ mjx-container[display="true"],
   width: 100% !important; 
   max-width: 100% !important; 
   
+  /* margin-top: 1.5em !important;
+  margin-bottom: 1.5em !important; */
+
   overflow-x: auto !important;
   overflow-y: hidden !important;
   

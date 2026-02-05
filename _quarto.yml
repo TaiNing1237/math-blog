@@ -28,8 +28,8 @@ format:
   html:
     theme:
       - cosmo
-      - brand
+      # - brand
     css: styles.css
-
-
-
+    
+execute:
+  freeze: false
