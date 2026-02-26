@@ -2,6 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/optimal-stopping/secretary-problem.html",
+      "/posts/scripts/steaks.html",
       "/posts/poker/lesson_7_comparison_full.html",
       "/posts/poker/lesson_6_comparison.html",
       "/posts/poker/lesson_5_hyperbolic_payoff.html",
