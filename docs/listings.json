@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/huggingface/001.html",
       "/posts/optimal-stopping/secretary-problem.html",
       "/posts/scripts/steaks.html",
       "/posts/poker/lesson_7_comparison_full.html",

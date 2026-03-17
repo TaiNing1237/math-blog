@@ -18,11 +18,11 @@
   </url>
   <url>
     <loc>https://your-website-url.example.com/posts/normal-distribution/day_9.html</loc>
-    <lastmod>2025-12-23T15:33:15.440Z</lastmod>
+    <lastmod>2026-03-16T08:34:41.838Z</lastmod>
   </url>
   <url>
     <loc>https://your-website-url.example.com/posts/normal-distribution/day_7.html</loc>
-    <lastmod>2025-12-23T15:33:15.439Z</lastmod>
+    <lastmod>2026-03-16T08:34:52.127Z</lastmod>
   </url>
   <url>
     <loc>https://your-website-url.example.com/posts/normal-distribution/day_5.html</loc>
@@ -46,7 +46,7 @@
   </url>
   <url>
     <loc>https://your-website-url.example.com/index.html</loc>
-    <lastmod>2026-02-26T09:40:44.172Z</lastmod>
+    <lastmod>2026-03-16T09:27:11.484Z</lastmod>
   </url>
   <url>
     <loc>https://your-website-url.example.com/about.html</loc>
@@ -90,11 +90,11 @@
   </url>
   <url>
     <loc>https://your-website-url.example.com/posts/poker/lesson_5_hyperbolic_payoff.html</loc>
-    <lastmod>2025-12-23T15:33:15.602Z</lastmod>
+    <lastmod>2026-03-16T08:34:35.251Z</lastmod>
   </url>
   <url>
     <loc>https://your-website-url.example.com/posts/poker/lesson_7_comparison_full.html</loc>
-    <lastmod>2026-02-26T07:14:27.673Z</lastmod>
+    <lastmod>2026-03-16T08:34:25.599Z</lastmod>
   </url>
   <url>
     <loc>https://your-website-url.example.com/posts/scripts/steaks.html</loc>
@@ -102,6 +102,10 @@
   </url>
   <url>
     <loc>https://your-website-url.example.com/posts/optimal-stopping/secretary-problem.html</loc>
-    <lastmod>2026-02-26T09:40:45.990Z</lastmod>
+    <lastmod>2026-03-16T07:19:33.715Z</lastmod>
+  </url>
+  <url>
+    <loc>https://your-website-url.example.com/posts/huggingface/001.html</loc>
+    <lastmod>2026-03-16T09:27:13.497Z</lastmod>
   </url>
 </urlset>

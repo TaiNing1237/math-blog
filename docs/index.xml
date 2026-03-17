@@ -10,7 +10,74 @@
 <atom:link href="https://your-website-url.example.com/index.xml" rel="self" type="application/rss+xml"/>
 <description>A blog built with Quarto</description>
 <generator>quarto-1.3.450</generator>
-<lastBuildDate>Wed, 25 Feb 2026 16:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 15 Mar 2026 16:00:00 GMT</lastBuildDate>
+<item>
+  <title>我們知道 Agentic AI 很厲害，但他們找答案的方法真的有效率嗎 - MADQA benchmark</title>
+  <dc:creator>Tai-Ning Liao</dc:creator>
+  <link>https://your-website-url.example.com/posts/huggingface/001.html</link>
+  <description><![CDATA[ 
+
+
+
+<p>這篇 paper 給了一套 2250 題題庫，定義了衡量多模態 AI agent 「搜尋效率」的方法，並給出了有趣的觀察。</p>
+<p>先講結論，Agent在搜尋上很擅長，但效率不如人類，可能是因為推理能力不足，agent甚至用暴力搜尋的方法 彌補了他推理能力不強的短版。</p>
+<p><img src="https://your-website-url.example.com/posts/huggingface/images/001-Human-win.png" class="img-fluid"></p>
+<p>一般來說，代理人 (AI agent) 在訓練時，有個 Reward Function，我們用人為定義獎勵機制，讓 agent 往我們想要的方向發展。 但我們今天不是要講這個，我們是要比較 agent 訓練出來的成果，跟人類專家比起來，是贏是輸? 而比較標準是什麼? 比速度的話 agent 當然會贏，所以說要定義出類似「精準度」的東西。</p>
+<p>這個東西叫做 Multimodal Agentic document QA benchmark。顧名思義，他要測試多模態(文字+圖片)的代理人，讀取多份文件後，問答表現的能力。</p>
+<ul>
+<li>MADQA資料集: 2250個人工撰寫的Q&amp;A。</li>
+<li>提供之參考文件: 來源自 800 份多樣化的文件，從金融報告到法律文件，從單頁到800多頁。視覺差異性大。文件之間在版面視覺密度差異巨大，金融和政府的文件表格密度高，技術文件圖形多等等。</li>
+<li>難度:
+<ul>
+<li>多跳 (multi-hop) 問題。任務無法透過單一步驟的檢索解決。需進行規畫、導航，整合來自多個不連續甚至多個文件的資訊 (8.3%跨頁，9.0%跨文件)。最終聚合成答案。</li>
+<li>單純關鍵字匹配 (n-gram) 無法解決。</li>
+<li>視覺感知: 多達 58% 問題受益於理解結構化版面、表格或視覺元素。</li>
+</ul></li>
+<li>邊界:
+<ul>
+<li>封閉世界: 答案完全從提供的資料庫中導出，要有依據。在無文件情況下，猜對機率僅11%。(其中3%來自運氣，8%可能來自訓練汙染)</li>
+<li>歸因: 答案必須準確歸因於最小的證據集。懲罰冗餘。</li>
+</ul></li>
+</ul>
+<p>如何衡量，agent的表現? 除了答對問題?</p>
+<p>本文引用了 Kuiper Statistic (庫柏統計量), K value。</p>
+<blockquote class="blockquote">
+<p>〔先講一個錯誤版本〕 假設題目的難度標記從 1 分到 100分，那我們花的時間，預計也要跟它呈正比。例如在難度1分的題目上若花 1分鐘，在難度100分的題目就是花 100分鐘。(假設這個難度量表有設計好)。那Kuiper Statistic其實很好理解，就是「多花的最長時間」加上「少花的最長時間」。比方說 agent 表現最差(最浪費時間) 是在難度3分的題目上花了10分鐘(超出預期7分鐘)，然後太快放棄的是在難度70分的問題只花了 55分鐘(少花了15分鐘)，那這個agent 的K value就是 7 + 15 = 22。</p>
+</blockquote>
+<p>直觀上我們想這樣定義，但是，量表怎麼設計? 誰設計的準? 沒有辦法。而且，客觀上我們只知道 agent 答對與否(0分或1分)。沒有對於答案品質的量化指標。</p>
+<p>所以我們改一種方式。因為我們題目很多，所以可以用機率模型來思考，也就是研究「答對率」與「花費時間」的關係。我們期望他是一個常數。</p>
+<blockquote class="blockquote">
+<p>假設有2000道題，我們把所有題目根據「agent花費的時間」(或者說，搜尋使用的step數，總之就是一個正實數)，由小排到大。 在這個排序下，我們希望，不管花多少時間，agent的答對率是「均勻的」。直覺來說，如果花比較少時間的題目 答對率較高，花較多時間的題目，答對率較低，那不就代表，其實那些花較多時間的題目是多餘的，應該要降低才對。那才是均勻分配時間的方法。</p>
+</blockquote>
+<p>但具體來說，可能花費時間 = 20 的只有一個取樣點，這要怎麼算答對率? 這時就是利用 paper 中的計算 cumulative 的方法來解決。在這邊就先不仔細展開。</p>
+<p><img src="https://your-website-url.example.com/posts/huggingface/images/001-Kuiper.png" class="img-fluid"></p>
+<p>研究結果: 有趣的發現是，</p>
+<ul>
+<li>Agent &gt; RAG</li>
+<li>Agent != Human。代理人與人類擅長的問題很不一樣。agent常依賴「暴力搜尋」彌補策略不足。</li>
+<li>Agent ~ Oracle * 80%。 代理人擅長檢索，但不擅長推理。</li>
+<li>Agent’s K value &gt;&gt; Human’s K value。代理人常花多餘的時間在搜索。</li>
+<li>隨著模型能力提升，檢索失敗類型的Error逐漸減少，轉向 理解失敗。證明了檢索是已被解決的問題。</li>
+<li>靈活的搜尋策略(用不同詞彙或方式重新搜尋) 與成功率成呈正相關。</li>
+<li>!? 跨文件比單文件容易? 原因不明。</li>
+</ul>
+<hr>
+<section id="結語" class="level2">
+<h2 class="anchored" data-anchor-id="結語">結語</h2>
+<p>學者們設計了一套 open book 題庫，目的不是在難倒AI，最強模型答對率已經有七成，但重點是，這些agent到底怎麼找出答案的，我們在剖析他們的搜尋方法 (不能說解剖思考過程，那是另一回事了)。</p>
+</section>
+<section id="實驗結果展示" class="level2">
+<h2 class="anchored" data-anchor-id="實驗結果展示">實驗結果展示</h2>
+<p><img src="https://your-website-url.example.com/posts/huggingface/images/001-table3.png" class="img-fluid"></p>
+
+
+</section>
+
+ ]]></description>
+  <category>HuggingFace Papers</category>
+  <guid>https://your-website-url.example.com/posts/huggingface/001.html</guid>
+  <pubDate>Sun, 15 Mar 2026 16:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Optimal Stopping - The Secretary Problem</title>
   <dc:creator>Tai-Ning Liao</dc:creator>
@@ -36,8 +103,7 @@
 <section id="逆向歸納法-backward-induction" class="level2">
 <h2 class="anchored" data-anchor-id="逆向歸納法-backward-induction">2. 逆向歸納法 (Backward Induction)</h2>
 <p>遇到這種不知從何下手的問題，最暴力的解法，就是從結果往回推。</p>
-<p>如果你有學過任何 Dynamic Programming（動態規劃）的話，現實中的 DP 絕對比這個還要複雜非常多。</p>
-<p>但秘書問題的本質，其實是最簡單的一種動態規劃，數學上叫做 Backward Induction，逆向歸納法。</p>
+<p>秘書問題的本質，其實是最簡單的一種動態規劃。 如果你有學過任何 Dynamic Programming 的話，現實中的 DP 絕對比這個還要複雜非常多。 這裡 optimal stopping 是一個特別簡單的情形，數學上叫做 Backward Induction，逆向歸納法。</p>
 <p>如果你沒學過也完全沒關係，因為我們現在馬上來看一下，它到底在幹嘛。</p>
 <p>想像一下，你站在面試的最後一關。如果前面都沒選，最後一個就算再爛，你也只能硬著頭皮選下去。因為你已經知道最後一步的下場，所以我們可以開始「往回倒推」。</p>
 <section id="確立解的形狀黃金交叉" class="level3">
@@ -969,7 +1035,6 @@ Figure&nbsp;5: Polarized Range
 
 
 
-
 <p>來延續上一篇的設定，假設 A 跟 B 玩 Seven-card stud， <img src="https://latex.codecogs.com/png.latex?40-80"> 元有限注，池底有 <img src="https://latex.codecogs.com/png.latex?P%20=%20100"> 元。</p>
 <p>現在來到最後一輪 River 下注(已經發了最後一張牌)，前六張都是開的，最後一張只有自己知道。</p>
 <ul>
@@ -991,7 +1056,7 @@ Figure&nbsp;5: Polarized Range
 <p>這邊兩個機率 <img src="https://latex.codecogs.com/png.latex?%5Calpha"> 跟 <img src="https://latex.codecogs.com/png.latex?%5Cbeta">，若直接硬算，那就會是跟上一篇一樣。但是其實只要算 <img src="https://latex.codecogs.com/png.latex?%5Calpha%20=%20%7B0,%201%7D">, <img src="https://latex.codecogs.com/png.latex?%5Cbeta%20=%20%7B0,%201%7D"> 四種極端情況即可，因為剩下的情況會是這兩種的 <strong>mixed strategy</strong>。</p>
 <ul>
 <li><p>若 Player B 拿到 Nuts，則 B 一定會 bet。在兩種極端狀況下，Player A 的期望值 payoff：</p>
-<table class="caption-top table">
+<table class="table">
 <colgroup>
 <col style="width: 39%">
 <col style="width: 29%">
@@ -1013,7 +1078,7 @@ Figure&nbsp;5: Polarized Range
 </tbody>
 </table></li>
 <li><p>若 Player B 拿到 Air。在四種極端狀況下，Player A 的期望值 payoff：</p>
-<table class="caption-top table">
+<table class="table">
 <colgroup>
 <col style="width: 48%">
 <col style="width: 25%">
@@ -1047,14 +1112,10 @@ Figure&nbsp;5: Polarized Range
 <li>Senario 3: Player B 拿到 Air，假設 Player B 總是過牌 (honest check)</li>
 </ul>
 <p>那麼對 Player A 來說，這三種情況的 payoff 分別是：</p>
-<div id="fig-lesson5-seesaw" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-lesson5-seesaw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://your-website-url.example.com/posts/poker/images/visualize_seesaw.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lesson5-seesaw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Seesaw Payoff
-</figcaption>
+<div id="fig-lesson5-seesaw" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/poker/images/visualize_seesaw.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;1: Seesaw Payoff</figcaption>
 </figure>
 </div>
 <p>因為 Player A 要最大化 payoff，所以會選數值大的 (翹翹板高處)。</p>
@@ -1063,7 +1124,7 @@ Figure&nbsp;1: Seesaw Payoff
 <section id="雙曲面" class="level3">
 <h3 class="anchored" data-anchor-id="雙曲面">雙曲面</h3>
 <p>假設 Player B 拿到 Nuts 的機率是 <img src="https://latex.codecogs.com/png.latex?r"> (此處 <img src="https://latex.codecogs.com/png.latex?r=1/5">)，那麼一個 average over Player B 手牌的 Player A payoff 表格，即是兩個表的加權平均：</p>
-<table class="caption-top table">
+<table class="table">
 <colgroup>
 <col style="width: 48%">
 <col style="width: 25%">
@@ -1090,7 +1151,7 @@ Figure&nbsp;1: Seesaw Payoff
 </tbody>
 </table>
 <p>先來簡化一下符號，將上面的 payoff 寫成矩陣 <img src="https://latex.codecogs.com/png.latex?X%20=%20%5BX_%7B%5Cbeta%20%5Calpha%7D%5D">：</p>
-<table class="caption-top table">
+<table class="table">
 <thead>
 <tr class="header">
 <th></th>
@@ -1115,28 +1176,20 @@ Figure&nbsp;1: Seesaw Payoff
 <p>既然已經知道 Pure Strategy 的 <strong>所有可能</strong> 情況，那麼 mix strategy 就是這些情況的 convex linear combination，而 <img src="https://latex.codecogs.com/png.latex?%5Calpha,%20%5Cbeta%20%5Cin%20%5B0,%201%5D"> 就是權重。</p>
 <p>所以在 mix strategy 時， Player A 的 payoff 期望值就是： <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cmathbb%7BE%7D%5B%5Ctext%7BPayoff%7D_A%5D%20&amp;%20=%20%5Calpha%20%5Cbeta%20X_%7B11%7D%20+%20%5Calpha%20(1-%5Cbeta)%20X_%7B01%7D%20+%20(1-%5Calpha)%20%5Cbeta%20X_%7B10%7D%20+%20(1-%5Calpha)(1-%5Cbeta)%20X_%7B00%7D%20%20%5Ctag%7B1%7D%5Clabel%7Beq:hyperbolic_payoff%7D%20%5C%5C%0A%5Cend%7Balign%7D%0A"></p>
 <p>將 <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BE%7D%5B%5Ctext%7BPayoff%7D_A%5D"> 視為一個 <img src="https://latex.codecogs.com/png.latex?%5Calpha,%20%5Cbeta"> 的函數，畫在三維空間中的話，就是一個雙曲面 (hyperbolic surface)：</p>
-<div id="fig-lesson5-hyperbolic_heatmap" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-lesson5-hyperbolic_heatmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://your-website-url.example.com/posts/poker/images/hyperbolic_heatmap.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lesson5-hyperbolic_heatmap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Hyperbolic Payoff Surface
-</figcaption>
+<div id="fig-lesson5-hyperbolic_heatmap" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/poker/images/hyperbolic_heatmap.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;2: Hyperbolic Payoff Surface</figcaption>
 </figure>
 </div>
 <p>這是一個標準的雙曲面 (hyperbolic paraboloid)，中間有個鞍點 (saddle point)。</p>
 <p>雖然是個二次函數，但當固定其中一個變數 (例如 <img src="https://latex.codecogs.com/png.latex?%5Cbeta">)，截面其實是一條直線。可以將雙曲面想成是一條直線一邊旋轉一邊平移所掃出來的曲面。</p>
 <p>當我們看 Side View 時 (相 <img src="https://latex.codecogs.com/png.latex?%5Cbeta"> 這個維度投影掉)，可以明顯看出這個直線掃出的感覺，這不就是剛剛的翹翹板? 沒錯，這個雙曲面其實就是把三個翹翹板「合體」起來的結果。</p>
 <p>讓我們 zoom in 看一下這個投影在 <img src="https://latex.codecogs.com/png.latex?%5Calpha">-<img src="https://latex.codecogs.com/png.latex?%5Cbeta"> 平面圖，其實也就是把 payoff 畫成 heatmap：</p>
-<div id="fig-lesson5-payoff_landscape" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-lesson5-payoff_landscape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="https://your-website-url.example.com/posts/poker/images/payoff_landscape.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lesson5-payoff_landscape-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: 2D Payoff Surface - Heatmap
-</figcaption>
+<div id="fig-lesson5-payoff_landscape" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="https://your-website-url.example.com/posts/poker/images/payoff_landscape.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;3: 2D Payoff Surface - Heatmap</figcaption>
 </figure>
 </div>
 <p>這張圖 Figure&nbsp;3 很視覺化了驗證了之前推導的結果:</p>
@@ -1159,7 +1212,7 @@ Figure&nbsp;3: 2D Payoff Surface - Heatmap
 <h3 class="anchored" data-anchor-id="講回翹翹板">講回翹翹板</h3>
 <p>我們再次回到翹翹板的圖像，原本翹翹板中間的桿子是沒有實質意義的，但現在剛好可以想成是線性的插值。</p>
 <p><img src="https://your-website-url.example.com/posts/poker/images/visualize_seesaw.png" class="img-fluid"></p>
-<table class="caption-top table">
+<table class="table">
 <thead>
 <tr class="header">
 <th></th>
@@ -1384,7 +1437,6 @@ Figure&nbsp;1: Seven-card stud
 
 
 
-
 <p>小時候就學過無窮等比級數:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Csum_%7Bn=0%7D%5E%7B%5Cinfty%7D%20r%5En%20=%20%5Cfrac%7B1%7D%7B1-r%7D,%20%5Cquad%20%7Cr%7C%3C1%0A"> 當時候胡思亂想，想說指數部分如果改成平方怎麼算? <img src="https://latex.codecogs.com/png.latex?%0A%5Csum_%7Bn=0%7D%5E%7B%5Cinfty%7D%20r%5E%7Bn%5E2%7D%20=%20?%0A"> 嗯… 當然是完全不會算，沒想到在大學的殿堂裡還會再次遇見他… <strong>Poisson Summation Formula (PSF)</strong>。</p>
 <p>這真的是數學中最奇怪又深奧的恆等式。</p>
@@ -1427,7 +1479,7 @@ Figure&nbsp;1: Seven-card stud
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://your-website-url.example.com/posts/normal-distribution/images/psf.png" class="img-fluid figure-img"></p>
-<figcaption>Poisson Summation Formula</figcaption>
+<figcaption class="figure-caption">Poisson Summation Formula</figcaption>
 </figure>
 </div>
 </section>
@@ -2736,13 +2788,12 @@ Figure&nbsp;1: Poker Pot Odds
 
 
 
-
 <p>今天回到我們的小數學風格，談點輕鬆的 Hermite Polynomials。</p>
 <p>如同其他正交多項式，Hermite polynomial也是一組正交多項式。我們來看一下他的生成函數 (generating function)： <img src="https://latex.codecogs.com/png.latex?%0Ae%5E%7Bxt%20-%20%5Cfrac%7Bt%5E2%7D%7B2%7D%7D%20:=%20%5Csum_%7Bn=0%7D%5E%7B%5Cinfty%7D%20%5Ctext%7BHe%7D_n(x)%20%5Cfrac%7Bt%5En%7D%7Bn!%7D%20%20%5Ctag%7B1%7D%5Clabel%7Beq:hermite-generating%7D%0A"></p>
 <p>欸，這個生成函數根本就是常態分佈 <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BN%7D(x,1)"> 的 MGF (moment generating function)！</p>
 <p>所以說，第 <img src="https://latex.codecogs.com/png.latex?n"> 階 <img src="https://latex.codecogs.com/png.latex?%5Ctext%7BHe%7D_n(x)"> 的定義其實就是常態分佈 <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BN%7D(x,1)"> 的 n-th moment 乘上 <img src="https://latex.codecogs.com/png.latex?n!">。</p>
 <p>這邊我們用的是 機率學家的埃爾米特多項式 (probabilists’ Hermite polynomials)，另外還有物理學家的 (physicists’ Hermite polynomials)，記做 <img src="https://latex.codecogs.com/png.latex?H_n(x)">，其中 <img src="https://latex.codecogs.com/png.latex?H_n(x)%20=%202%5E%7B%5Cfrac%7Bn%7D%7B2%7D%7D%20%5Ctext%7BHe%7D_n(%5Csqrt%7B2%7Dx)">，也就是在定義上差了兩倍的標準差。本質上是一樣的，所以我們先專注在前者。</p>
-<table class="caption-top table">
+<table class="table">
 <thead>
 <tr class="header">
 <th><img src="https://latex.codecogs.com/png.latex?n"></th>
@@ -2778,8 +2829,9 @@ Figure&nbsp;1: Poker Pot Odds
 </tr>
 </tbody>
 </table>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="43" data-source-offset="-45" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 42;"><span id="cb1-43"><span class="kw" style="color: #003B4F;
+<div id="fig-hermite-polynomials" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="43" data-source-offset="-45" style="background: #f1f3f5;"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 42;"><span id="cb1-43"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -3133,58 +3185,39 @@ background-color: null;
 font-style: inherit;">2</span> </span>
 <span id="cb1-81">    })</span>
 <span id="cb1-82">  ]</span>
-<span id="cb1-83">})</span></code></pre></div></div>
-<div id="fig-hermite-polynomials" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-hermite-polynomials-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<span id="cb1-83">})</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-hermite-polynomials-1" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-hermite-polynomials-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="fig-hermite-polynomials-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
 <div id="ojs-cell-1-1" data-nodetype="declaration">
 
 </div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-hermite-polynomials-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a)
-</figcaption>
+<figcaption class="figure-caption">(a) <strong>?(caption)</strong></figcaption>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-hermite-polynomials-2" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-hermite-polynomials-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="fig-hermite-polynomials-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
 <div id="ojs-cell-1-2" data-nodetype="declaration">
 
 </div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-hermite-polynomials-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b)
-</figcaption>
+<figcaption class="figure-caption">(b) <strong>?(caption)</strong></figcaption>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-hermite-polynomials-3" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-hermite-polynomials-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="fig-hermite-polynomials-3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
 <div id="ojs-cell-1-3" data-nodetype="expression">
 
 </div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-hermite-polynomials-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(c)
-</figcaption>
+<figcaption class="figure-caption">(c) <strong>?(caption)</strong></figcaption>
 </figure>
 </div>
 </div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hermite-polynomials-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: 機率學家的 Hermite 多項式 (He₀ - He₄)
-</figcaption>
+<figcaption class="figure-caption">Figure&nbsp;1: 機率學家的 Hermite 多項式 (He₀ - He₄)</figcaption>
 </figure>
-</div>
 </div>
 <section id="計算-hermite-多項式" class="level3">
 <h3 class="anchored" data-anchor-id="計算-hermite-多項式">計算 Hermite 多項式</h3>
@@ -5199,317 +5232,6 @@ Table&nbsp;2: My Discrete Distribution Table
   <category>Normal Distribution</category>
   <guid>https://your-website-url.example.com/posts/normal-distribution/day_2.html</guid>
   <pubDate>Wed, 12 Nov 2025 16:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Conjugate Prior</title>
-  <dc:creator>Tai-Ning Liao</dc:creator>
-  <link>https://your-website-url.example.com/posts/2025-1112-conjugacy_prior/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="什麼是共軛分佈從丟硬幣開始說起" class="level3">
-<h3 class="anchored" data-anchor-id="什麼是共軛分佈從丟硬幣開始說起">什麼是共軛分佈？從丟硬幣開始說起</h3>
-<p>在貝氏統計 (Bayesian statistics) 中，我們經常需要估計一個未知參數的機率分佈。</p>
-<p>讓我們從一個最經典的問題開始：<strong>丟硬幣</strong>。</p>
-<p>假設我們有一枚硬幣，它有 <img src="https://latex.codecogs.com/png.latex?p"> 的機率正面朝上。我們不知道 <img src="https://latex.codecogs.com/png.latex?p"> 究竟是多少（可能是一枚完美的硬幣，<img src="https://latex.codecogs.com/png.latex?p=0.5">，也可能是一枚被動過手腳的硬幣）。</p>
-<p>為了估計 <img src="https://latex.codecogs.com/png.latex?p">，我們開始做實驗：連續丟這枚硬幣。 假設我們總共丟了 <img src="https://latex.codecogs.com/png.latex?N"> 次，結果是 <strong><img src="https://latex.codecogs.com/png.latex?%5Calpha"> 次正面</strong>和 <strong><img src="https://latex.codecogs.com/png.latex?%5Cbeta"> 次反面</strong>（其中 <img src="https://latex.codecogs.com/png.latex?%5Calpha%20+%20%5Cbeta%20=%20N">）。</p>
-<p>現在，問題來了：我們對 <img src="https://latex.codecogs.com/png.latex?p"> 的<strong>最佳</strong>估計是什麼？</p>
-<hr>
-</section>
-<section id="什麼才算最好的估計" class="level3">
-<h3 class="anchored" data-anchor-id="什麼才算最好的估計">什麼才算「最好」的估計？</h3>
-<p>要回答這個問題，我們必須先釐清「最好」是什麼意思。在統計學上，至少有兩種截然不同的思考流派。</p>
-<p><strong>觀點一：最大似然估計 (Maximum Likelihood Estimation, MLE)</strong></p>
-<p>這是「頻率學派」的觀點。他們會問：</p>
-<blockquote class="blockquote">
-<p>哪一個 <img src="https://latex.codecogs.com/png.latex?p"> 值，最有可能產生我們<strong>觀測到的實驗結果</strong>（<img src="https://latex.codecogs.com/png.latex?%5Calpha"> 次正面，<img src="https://latex.codecogs.com/png.latex?%5Cbeta"> 次反面）？</p>
-</blockquote>
-<p>我們把觀測到的數據 (Data) 稱為 <img src="https://latex.codecogs.com/png.latex?D">。這個觀點的目標是找到一個 <img src="https://latex.codecogs.com/png.latex?p">，來最大化「給定 <img src="https://latex.codecogs.com/png.latex?p"> 之後，觀測到 <img src="https://latex.codecogs.com/png.latex?D">」的機率。這個機率在統計上稱為<strong>似然 (Likelihood)</strong>。</p>
-<p>寫成數學式，我們要找的就是： <img src="https://latex.codecogs.com/png.latex?%0A%5Ctext%7Barg%7D%5Cmax_%7Bp%7D%20%7B%20%5Cmathbb%7BP%7D(D%20%5Cmid%20p)%20%7D%0A"></p>
-<p>（在這個硬幣問題中，<img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(D%20%5Cmid%20p)%20=%20p%5E%5Calpha%20(1-p)%5E%5Cbeta">。懂微積分的話，你會發現答案是 <img src="https://latex.codecogs.com/png.latex?p%20=%20%5Cfrac%7B%5Calpha%7D%7B%5Calpha+%5Cbeta%7D">，這非常直觀。）</p>
-<p><strong>觀點二：貝氏推論 (Bayesian Inference)</strong></p>
-<p>這是「貝氏學派」的觀點。他們會說：</p>
-<blockquote class="blockquote">
-<p>在我們開始丟硬幣<strong>之前</strong>，我們對 <img src="https://latex.codecogs.com/png.latex?p"> 就已經有一些<strong>初步的信念</strong>（比如，它可能是一枚公平硬幣，所以 <img src="https://latex.codecogs.com/png.latex?p"> 應該在 0.5 附近）。</p>
-<p>然後，我們利用實驗數據 <img src="https://latex.codecogs.com/png.latex?D"> 來<strong>更新</strong>這個信念。</p>
-</blockquote>
-<p>在這個框架下，<img src="https://latex.codecogs.com/png.latex?p"> 不再是一個固定的未知數，而是<strong>一個隨機變數</strong>，它自己也有一個機率分佈。</p>
-<p>這裡有三個核心概念：</p>
-<ol type="1">
-<li><strong>事前分佈 (Prior Distribution) <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(p)">：</strong> 在觀測到任何數據<strong>之前</strong>，我們對 <img src="https://latex.codecogs.com/png.latex?p"> 的信念分佈。</li>
-<li><strong>似然 (Likelihood) <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(D%20%5Cmid%20p)">：</strong> 同 MLE，代表「在某個 <img src="https://latex.codecogs.com/png.latex?p"> 之下，觀測到數據 <img src="https://latex.codecogs.com/png.latex?D">」的機率。</li>
-<li><strong>事後分佈 (Posterior Distribution) <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(p%20%5Cmid%20D)">：</strong> 在觀測到數據 <img src="https://latex.codecogs.com/png.latex?D"> <strong>之後</strong>，我們對 <img src="https://latex.codecogs.com/png.latex?p"> <strong>更新後的信念</strong>分佈。</li>
-</ol>
-<hr>
-<p><strong>貝氏定理：更新信念的關鍵</strong></p>
-<p>貝氏學派的精髓，就是透過「貝氏定理」來完成這個信念的更新：</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbb%7BP%7D(p%20%5Cmid%20D)%20=%20%5Cfrac%7B%5Cmathbb%7BP%7D(D%20%5Cmid%20p)%20%5Ccdot%20%5Cmathbb%7BP%7D(p)%7D%7B%5Cmathbb%7BP%7D(D)%7D%0A"></p>
-<p>這個公式可能看起來有點嚇人，但它的核心思想很簡單：</p>
-<blockquote class="blockquote">
-<p><strong>事後分佈 <img src="https://latex.codecogs.com/png.latex?%5Cpropto"> 似然 <img src="https://latex.codecogs.com/png.latex?%5Ctimes"> 事前分佈</strong> (Posterior <img src="https://latex.codecogs.com/png.latex?%5Cpropto"> Likelihood <img src="https://latex.codecogs.com/png.latex?%5Ctimes"> Prior)</p>
-</blockquote>
-</section>
-<section id="為什麼我們需要共軛分佈" class="level3">
-<h3 class="anchored" data-anchor-id="為什麼我們需要共軛分佈">為什麼我們需要「共軛分佈」？</h3>
-<p>貝氏推論非常強大，但它有個很現實的數學問題：</p>
-<p>要計算事後分佈 <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(p%20%5Cmid%20D)">，我們需要計算分母 <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(D)">。 <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(D)%20=%20%5Cint%20%5Cmathbb%7BP%7D(D%20%5Cmid%20p)%20%5Cmathbb%7BP%7D(p)%20%5Ctext%7Bd%7Dp">。這個積分（或離散情況下的加總）常常<strong>非常複雜</strong>，甚至算不出來。</p>
-<p>這就讓早期的統計學家很頭痛。直到他們發現了一個「捷徑」。</p>
-<p><strong>想像一下：</strong></p>
-<p>如果我們<strong>精心挑選</strong>一個「事前分佈」<img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(p)">，使得它在乘上「似然函數」<img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(D%20%5Cmid%20p)"> 之後，得到的「事後分佈」<img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(p%20%5Cmid%20D)"> …</p>
-<p>…<strong>竟然跟原來的「事前分佈」長得一模一樣</strong>（只是參數不同了）！</p>
-<p>這就太神奇了！這代表：</p>
-<ol type="1">
-<li><strong>計算超級簡單：</strong> 我們不需要去算那個可怕的積分，只需要套用簡單的「參數更新規則」就好。</li>
-<li><strong>迭代更新：</strong> 這次得到的「事後分佈」可以當作下一次實驗的「事前分佈」，形成一個不斷學習的循環。</li>
-</ol>
-<p>這種「事前分佈」與「事後分佈」<strong>同屬於一個機率分佈家族</strong>的特性，就稱為<strong>共軛 (Conjugacy)</strong>。</p>
-<p>我們稱：</p>
-<blockquote class="blockquote">
-<p><strong>這個「事前分佈」(Prior) 是該「似然函數」(Likelihood) 的「共軛事前分佈」(Conjugate Prior)。</strong></p>
-</blockquote>
-<p>回到我們最初的硬幣問題。</p>
-<p>我們的「似然函數」<img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(D%20%5Cmid%20p)"> 是一個<strong>二項分佈 (Binomial Distribution)</strong> 的形式。</p>
-<p>那麼，是否存在一個機率分佈，是二項分佈的「共軛事前分佈」呢？</p>
-<p>答案是：<strong>有！</strong></p>
-<hr>
-</section>
-<section id="數學推導為什麼-beta-是二項分佈的共軛" class="level3">
-<h3 class="anchored" data-anchor-id="數學推導為什麼-beta-是二項分佈的共軛">數學推導：為什麼 Beta 是二項分佈的共軛？</h3>
-<p><strong>第 1 步：定義我們的「似然」 (Likelihood)</strong></p>
-<p>我們的實驗是丟硬幣，得到了 <img src="https://latex.codecogs.com/png.latex?%5Calpha"> 次正面和 <img src="https://latex.codecogs.com/png.latex?%5Cbeta"> 次反面。 給定一個特定的 <img src="https://latex.codecogs.com/png.latex?p">（正面機率），發生這件事的機率（即「似然」）是一個<strong>二項分佈 (Binomial Distribution)</strong>：</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbb%7BP%7D(D%20%5Cmid%20p)%20=%20%5Cbinom%7B%5Calpha+%5Cbeta%7D%7B%5Calpha%7D%20p%5E%5Calpha%20(1-p)%5E%5Cbeta%0A"></p>
-<p>在貝氏推導中，我們只關心這個公式「作為 <img src="https://latex.codecogs.com/png.latex?p"> 的函數」長什麼樣子。那個 <img src="https://latex.codecogs.com/png.latex?%5Cbinom%7B%5Calpha+%5Cbeta%7D%7B%5Calpha%7D"> 是一個常數（跟 <img src="https://latex.codecogs.com/png.latex?p"> 無關），所以我們可以把它合併到 <img src="https://latex.codecogs.com/png.latex?%5Cpropto"> (正比於) 符號中：</p>
-<blockquote class="blockquote">
-<p><strong>Likelihood: <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(D%20%5Cmid%20p)%20%5Cpropto%20p%5E%5Calpha%20(1-p)%5E%5Cbeta"></strong></p>
-</blockquote>
-<p><strong>第 2 步：介紹主角「Beta 分佈」</strong></p>
-<p>現在，我們需要尋找一個「事前分佈」<img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(p)">，它乘上 <img src="https://latex.codecogs.com/png.latex?p%5E%5Calpha%20(1-p)%5E%5Cbeta"> 之後，長得會跟自己很像。</p>
-<p>仔細看 <img src="https://latex.codecogs.com/png.latex?p%5E%5Calpha%20(1-p)%5E%5Cbeta"> 這個形式… 如果我們的「事前分佈」也長成「<img src="https://latex.codecogs.com/png.latex?p"> 的幾次方」乘上「<img src="https://latex.codecogs.com/png.latex?(1-p)"> 的幾次方」，那它們相乘時，不就可以很漂亮地合併指數嗎？</p>
-<p>這正是 <strong>Beta 分佈</strong>登場的時刻！</p>
-<p>Beta 分佈的機率密度函數 (PDF) 定義在 <img src="https://latex.codecogs.com/png.latex?p%20%5Cin%20%5B0,%201%5D"> 之間（這剛好就是機率 <img src="https://latex.codecogs.com/png.latex?p"> 的合理範圍），它有兩個<strong>超參數 (hyperparameters)</strong>，我們叫它們 <img src="https://latex.codecogs.com/png.latex?a"> 和 <img src="https://latex.codecogs.com/png.latex?b">：</p>
-<blockquote class="blockquote">
-<p><strong>Prior: <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(p)%20=%20%5Ctext%7BBeta%7D(p%20%5Cmid%20a,%20b)%20=%20%5Cfrac%7B1%7D%7BB(a,%20b)%7D%20p%5E%7Ba-1%7D%20(1-p)%5E%7Bb-1%7D"></strong></p>
-</blockquote>
-<ul>
-<li><img src="https://latex.codecogs.com/png.latex?a"> 和 <img src="https://latex.codecogs.com/png.latex?b"> 必須大於 0。</li>
-<li><img src="https://latex.codecogs.com/png.latex?B(a,%20b)"> 是一個常數（Beta 函數，<img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5CGamma(a)%5CGamma(b)%7D%7B%5CGamma(a+b)%7D">），用來確保整個分佈的總機率積分為 1。</li>
-<li><strong>直觀上</strong>，你可以把 <img src="https://latex.codecogs.com/png.latex?a"> 想像成我們在實驗前「信念中」的正面次數， <img src="https://latex.codecogs.com/png.latex?b"> 想像成「信念中」的反面次數。</li>
-</ul>
-<p>和似然函數一樣，在 <img src="https://latex.codecogs.com/png.latex?%5Cpropto"> 的世界裡，我們可以暫時忽略常數 <img src="https://latex.codecogs.com/png.latex?B(a,%20b)">：</p>
-<blockquote class="blockquote">
-<p><strong>Prior: <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(p)%20%5Cpropto%20p%5E%7Ba-1%7D%20(1-p)%5E%7Bb-1%7D"></strong></p>
-</blockquote>
-<p><strong>第 3 步：施展貝氏魔法！(推導事後分佈)</strong></p>
-<p>我們把 Likelihood 和 Prior 相乘：</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Baligned%7D%0A%5Cmathbb%7BP%7D(p%20%5Cmid%20D)%20&amp;%5Cpropto%20%5Cmathbb%7BP%7D(D%20%5Cmid%20p)%20%5Ctimes%20%5Cmathbb%7BP%7D(p)%20%20%5C%5C%0A&amp;%5Cpropto%20%5Bp%5E%5Calpha%20(1-p)%5E%5Cbeta%5D%20%5Ctimes%20%5Bp%5E%7Ba-1%7D%20(1-p)%5E%7Bb-1%7D%5D%20%20%5C%5C%0A&amp;%5Cpropto%20p%5E%7B(%5Calpha%20+%20a)%20-%201%7D%20%5Ctimes%20(1-p)%5E%7B(%5Cbeta%20+%20b)%20-%201%7D%0A%5Cend%7Baligned%7D%0A"></p>
-<p><strong>第 4 步：揭曉答案</strong></p>
-<p>請停下來，仔細看看我們得到的結果：</p>
-<p><strong>事後分佈: <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(p%20%5Cmid%20D)%20%5Cpropto%20p%5E%7B(a%20+%20%5Calpha)%20-%201%7D%20%5Ccdot%20(1-p)%5E%7B(b%20+%20%5Cbeta)%20-%201%7D"></strong></p>
-<p>再回頭看看我們的事前分佈：</p>
-<p><strong>事前分佈: <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(p)%20%5Cpropto%20p%5E%7Ba%20-%201%7D%20%5Ccdot%20(1-p)%5E%7Bb%20-%201%7D"></strong></p>
-<p><strong>它們的數學形式一模一樣！</strong></p>
-<p>這證明了事後分佈<strong>仍然是一個 Beta 分佈</strong>。只不過，它的參數從 <img src="https://latex.codecogs.com/png.latex?(a,%20b)"> 更新成了 <img src="https://latex.codecogs.com/png.latex?(a%20+%20%5Calpha,%20b%20+%20%5Cbeta)">。</p>
-<hr>
-</section>
-<section id="結論" class="level3">
-<h3 class="anchored" data-anchor-id="結論">結論：</h3>
-<p>這個推導告訴我們一個美妙的更新規則：</p>
-<blockquote class="blockquote">
-<p>如果你對 <img src="https://latex.codecogs.com/png.latex?p"> 的「事前信念」是 <img src="https://latex.codecogs.com/png.latex?%5Ctext%7BBeta%7D(a,%20b)">，</p>
-<p>接著你觀測到了 <img src="https://latex.codecogs.com/png.latex?%5Calpha"> 次正面和 <img src="https://latex.codecogs.com/png.latex?%5Cbeta"> 次反面，</p>
-<p>那麼你對 <img src="https://latex.codecogs.com/png.latex?p"> 的「事後信念」<strong>就是</strong> <img src="https://latex.codecogs.com/png.latex?%5Ctext%7BBeta%7D(a%20+%20%5Calpha,%20b%20+%20%5Cbeta)">。</p>
-</blockquote>
-<p><strong>這就是共軛的魔力！</strong></p>
-<ul>
-<li><strong>無需計算複雜積分：</strong> 我們完全繞過了 <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(D)%20=%20%5Cint%20%5Cmathbb%7BP%7D(D%20%5Cmid%20p)%20%5Cmathbb%7BP%7D(p)%20%5Ctext%7Bd%7Dp"> 這個大魔王。</li>
-<li><strong>直觀的更新：</strong> 我們的信念更新規則變成了<strong>簡單的加法</strong>。
-<ul>
-<li>新的 “正面” 參數 = 舊的 “正面” 信念 + 觀測到的正面次數</li>
-<li>新的 “反面” 參數 = 舊的 “反面” 信念 + 觀測到的反面次數</li>
-</ul></li>
-<li><strong>迭代學習：</strong> 這個新的 <img src="https://latex.codecogs.com/png.latex?%5Ctext%7BBeta%7D(a+%5Calpha,%20b+%5Cbeta)"> 分佈可以立刻作為下一次實驗的「事前分佈」，讓我們不斷地、無縫地用新數據更新我們的信念。</li>
-</ul>
-<p>這完美地展示了貝氏統計如何將「先驗知識」與「觀測數據」優雅地結合起來。</p>
-</section>
-<section id="共軛分佈二估計事件的發生率-gamma-與-poisson-的共舞" class="level2">
-<h2 class="anchored" data-anchor-id="共軛分佈二估計事件的發生率-gamma-與-poisson-的共舞">共軛分佈（二）：估計事件的「發生率」— Gamma 與 Poisson 的共舞</h2>
-<p>如果我們要估計的不是一個 0 到 1 的機率，而是一個**「率」 (rate)** 呢？例如：</p>
-<ul>
-<li>一個客服中心，平均<strong>每小時</strong>接到多少通電話？</li>
-<li>一個路口，平均<strong>每 10 分鐘</strong>會經過多少輛車？</li>
-<li>你的程式碼，平均<strong>每 1000 行</strong>有多少個 bug？</li>
-</ul>
-<p>這些事件的共同點是，它們在一個連續區間（時間、空間）內發生，我們可以去「計數」(count)，理論上發生的次數可以 是 0, 1, 2, … 一直到無限大。</p>
-<p>這類「計數」問題，正是 <strong>Poisson 分佈</strong>的主場。而當我們想對 Poisson 分佈的「率」(<img src="https://latex.codecogs.com/png.latex?%5Clambda">) 進行貝氏推論時，就輪到它的共軛夥伴——<strong>Gamma 分佈</strong>——登場了。</p>
-<p><strong>第一步：我們的「似然」— Poisson 分佈</strong></p>
-<p>和之前一樣，貝氏推論的第一步是建立我們的<strong>似然 (Likelihood)</strong>。</p>
-<p>我們要估計的核心參數是 <img src="https://latex.codecogs.com/png.latex?%5Clambda"> (lambda)，代表「單位時間（或單位空間）內的平均事件發生率」。</p>
-<p><strong>Poisson 分佈</strong>告訴我們，如果平均率是 <img src="https://latex.codecogs.com/png.latex?%5Clambda">，那麼在一個單位時間內，實際觀測到 <img src="https://latex.codecogs.com/png.latex?k"> 次事件的機率為：</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbb%7BP%7D(k%20%5Cmid%20%5Clambda)%20=%20%5Cfrac%7B%5Clambda%5Ek%20e%5E%7B-%5Clambda%7D%7D%7Bk!%7D%0A"> 假設我們進行了 <img src="https://latex.codecogs.com/png.latex?n"> 次觀測（例如，我們觀察了 <img src="https://latex.codecogs.com/png.latex?n"> 個小時），得到的數據是 <img src="https://latex.codecogs.com/png.latex?D%20=%20%5C%7Bx_1,%20x_2,%20%5Cdots,%20x_n%5C%7D">，其中 <img src="https://latex.codecogs.com/png.latex?x_i"> 是第 <img src="https://latex.codecogs.com/png.latex?i"> 個小時觀測到的事件次數。</p>
-<p>「給定 <img src="https://latex.codecogs.com/png.latex?%5Clambda">」，觀測到這整組數據 <img src="https://latex.codecogs.com/png.latex?D"> 的聯合機率（似然）就是把所有機率乘起來： <img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbb%7BP%7D(D%20%5Cmid%20%5Clambda)%20=%20%5Cprod_%7Bi=1%7D%5En%20%5Cfrac%7B%5Clambda%5E%7Bx_i%7D%20e%5E%7B-%5Clambda%7D%7D%7Bx_i!%7D%0A"></p>
-<p>在貝氏推論中，我們只關心和 <img src="https://latex.codecogs.com/png.latex?%5Clambda"> 相關的項。把上式重新整理：</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Baligned%7D%0A%5Cmathbb%7BP%7D(D%20%5Cmid%20%5Clambda)%20&amp;%5Cpropto%20%5Cleft(%20%5Cprod_%7Bi=1%7D%5En%20%5Clambda%5E%7Bx_i%7D%20%5Cright)%20%5Cleft(%20%5Cprod_%7Bi=1%7D%5En%20e%5E%7B-%5Clambda%7D%20%5Cright)%20%5C%5C%0A&amp;%5Cpropto%20%5Clambda%5E%7B%5Csum%20x_i%7D%20%5Ccdot%20e%5E%7B-n%5Clambda%7D%0A%5Cend%7Baligned%7D%0A"></p>
-<p>令 <img src="https://latex.codecogs.com/png.latex?S%20=%20%5Csum%20x_i">（我們觀測到的<strong>總事件數</strong>），我們的似然函數可以簡潔地表示為：</p>
-<blockquote class="blockquote">
-<p><strong>Likelihood: <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(D%20%5Cmid%20%5Clambda)%20%5Cpropto%20%5Clambda%5ES%20e%5E%7B-n%5Clambda%7D"></strong></p>
-</blockquote>
-<p><strong>第二步：我們的「事前」— Gamma 分佈</strong></p>
-<p>現在，我們需要為 <img src="https://latex.codecogs.com/png.latex?%5Clambda"> 選擇一個<strong>事前分佈 (Prior)</strong>。 <img src="https://latex.codecogs.com/png.latex?%5Clambda"> 作為一個「率」，它必須大於 0。我們需要一個定義在 <img src="https://latex.codecogs.com/png.latex?(0,%20%5Cinfty)"> 上的機率分佈。</p>
-<p>更重要的是，我們希望這個事前分佈 <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(%5Clambda)"> 乘上似然 <img src="https://latex.codecogs.com/png.latex?%5Clambda%5ES%20e%5E%7B-n%5Clambda%7D"> 之後，能得到一個形式相同的分佈。</p>
-<p>看看似然的形式：<img src="https://latex.codecogs.com/png.latex?%5Clambda"> 的某次方，再乘以 <img src="https://latex.codecogs.com/png.latex?e"> 的 <img src="https://latex.codecogs.com/png.latex?%5Clambda"> 負次方。 什麼分佈長這樣呢？ 答案就是 <strong>Gamma 分佈</strong>！</p>
-<p>Gamma 分佈由兩個超參數 <img src="https://latex.codecogs.com/png.latex?%5Calpha"> (shape, 形狀) 和 <img src="https://latex.codecogs.com/png.latex?%5Cbeta"> (rate, 率) 定義：</p>
-<blockquote class="blockquote">
-<p><strong>Prior: <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(%5Clambda)%20=%20%5Ctext%7BGamma%7D(%5Clambda%20%5Cmid%20%5Calpha,%20%5Cbeta)%20%5Cpropto%20%5Clambda%5E%7B%5Calpha-1%7D%20e%5E%7B-%5Cbeta%5Clambda%7D"></strong></p>
-</blockquote>
-<p><strong>直觀解釋 <img src="https://latex.codecogs.com/png.latex?%5Calpha"> 和 <img src="https://latex.codecogs.com/png.latex?%5Cbeta">：</strong> 你可以把 <img src="https://latex.codecogs.com/png.latex?%5Calpha"> 想像成你的「事前信念中的<strong>總事件數</strong>」，而 <img src="https://latex.codecogs.com/png.latex?%5Cbeta"> 是「事前信念中的<strong>總觀測單位數</strong>」。 例如，如果你「猜」這個率 <img src="https://latex.codecogs.com/png.latex?%5Clambda"> 大約是 5（例如 5 通電話 / 1 小時），你可以設 <img src="https://latex.codecogs.com/png.latex?%5Calpha=5,%20%5Cbeta=1">。</p>
-<p><strong>第三步：貝氏魔法！推導「事後分佈」</strong></p>
-<p>我們再次使出貝氏定理的武器：</p>
-<blockquote class="blockquote">
-<p><strong>事後分佈 (Posterior) <img src="https://latex.codecogs.com/png.latex?%5Cpropto"> 似然 (Likelihood) <img src="https://latex.codecogs.com/png.latex?%5Ctimes"> 事前分佈 (Prior)</strong></p>
-</blockquote>
-<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Baligned%7D%0A%5Cmathbb%7BP%7D(%5Clambda%20%5Cmid%20D)%20&amp;%5Cpropto%20%5Cmathbb%7BP%7D(D%20%5Cmid%20%5Clambda)%20%5Ctimes%20%5Cmathbb%7BP%7D(%5Clambda)%20%5C%5C%0A&amp;%5Cpropto%20%5B%5Clambda%5ES%20e%5E%7B-n%5Clambda%7D%5D%20%5Ctimes%20%5B%5Clambda%5E%7B%5Calpha-1%7D%20e%5E%7B-%5Cbeta%5Clambda%7D%5D%20%20%5C%5C%0A&amp;%5Cpropto%20%5Clambda%5E%7B(S%20+%20%5Calpha)%20-%201%7D%20%5Ccdot%20e%5E%7B-(n%20+%20%5Cbeta)%5Clambda%7D%0A%5Cend%7Baligned%7D%0A"></p>
-<p>它是不是 <img src="https://latex.codecogs.com/png.latex?%5Clambda"> 的 (某數 - 1) 次方，再乘以 <img src="https://latex.codecogs.com/png.latex?e"> 的 (負某數) <img src="https://latex.codecogs.com/png.latex?%5Clambda"> 次方？ <strong>這正是一個新的 Gamma 分佈！</strong></p>
-<hr>
-<section id="結論優雅的更新規則" class="level3">
-<h3 class="anchored" data-anchor-id="結論優雅的更新規則">結論：優雅的更新規則</h3>
-<p>我們證明了：</p>
-<blockquote class="blockquote">
-<p>如果你的事前信念是 <img src="https://latex.codecogs.com/png.latex?%5Ctext%7BGamma%7D(%5Calpha,%20%5Cbeta)">，</p>
-<p>接著你觀測了 <img src="https://latex.codecogs.com/png.latex?n"> 個單位，總共發生了 <img src="https://latex.codecogs.com/png.latex?S%20=%20%5Csum%20x_i"> 次事件，</p>
-<p>你的事後信念就會更新為 <img src="https://latex.codecogs.com/png.latex?%5Ctext%7BGamma%7D(%5Calpha_%7B%5Ctext%7Bnew%7D%7D,%20%5Cbeta_%7B%5Ctext%7Bnew%7D%7D)">。</p>
-</blockquote>
-<p>更新規則超級簡單，只是加法：</p>
-<ul>
-<li><strong><img src="https://latex.codecogs.com/png.latex?%5Calpha_%7B%5Ctext%7Bnew%7D%7D%20=%20%5Calpha%20+%20S"></strong> (舊的事件數 + 新觀測到的事件數)</li>
-<li><strong><img src="https://latex.codecogs.com/png.latex?%5Cbeta_%7B%5Ctext%7Bnew%7D%7D%20=%20%5Cbeta%20+%20n"></strong> (舊的觀測單位 + 新觀測的單位數)</li>
-</ul>
-<p>舉個例子：</p>
-<ol type="1">
-<li><strong>事前 (Prior)：</strong> 你是新來的客服經理，你<strong>猜測</strong>客服中心平均每小時接 10 通電話。你對這個猜測不太確定，所以你設定了 <img src="https://latex.codecogs.com/png.latex?%5Ctext%7BGamma%7D(%5Calpha=10,%20%5Cbeta=1)"> 當作你的事前信念。（信念強度 = 1 小時的觀測）</li>
-<li><strong>數據 (Data)：</strong> 你實際去觀測了 5 個小時（<img src="https://latex.codecogs.com/png.latex?n=5">），接到的電話數分別是 <img src="https://latex.codecogs.com/png.latex?%5C%7B12,%208,%2011,%2010,%209%5C%7D">。</li>
-<li><strong>似然 (Likelihood)：</strong> 觀測單位 <img src="https://latex.codecogs.com/png.latex?n=5">。觀測總數 <img src="https://latex.codecogs.com/png.latex?S%20=%2012+8+11+10+9%20=%2050">。</li>
-<li><strong>事後 (Posterior)：</strong></li>
-</ol>
-<ul>
-<li><img src="https://latex.codecogs.com/png.latex?%5Calpha_%7B%5Ctext%7Bnew%7D%7D%20=%20%5Calpha%20+%20S%20=%2010%20+%2050%20=%2060"></li>
-<li><img src="https://latex.codecogs.com/png.latex?%5Cbeta_%7B%5Ctext%7Bnew%7D%7D%20=%20%5Cbeta%20+%20n%20=%201%20+%205%20=%206"></li>
-<li>你更新後的信念是 <img src="https://latex.codecogs.com/png.latex?%5Ctext%7BGamma%7D(60,%206)">。</li>
-</ul>
-<p>Gamma 分佈的期望值是 <img src="https://latex.codecogs.com/png.latex?%5Calpha%20/%20%5Cbeta">。</p>
-<ul>
-<li>你<strong>原先</strong>的期望值是 <img src="https://latex.codecogs.com/png.latex?%5Calpha/%5Cbeta%20=%2010%20/%201%20=%2010"> 通/小時。</li>
-<li>你<strong>更新後</strong>的期望值是 <img src="https://latex.codecogs.com/png.latex?%5Calpha_%7B%5Ctext%7Bnew%7D%7D%20/%20%5Cbeta_%7B%5Ctext%7Bnew%7D%7D%20=%2060%20/%206%20=%2010"> 通/小時。</li>
-</ul>
-<p>在這個例子中，你的平均估計沒有變，因為你的觀測數據 (50/5 = 10) 剛好符合你的猜測！但是，你的<strong>信心</strong>大大增加了（Gamma(60, 6) 是一個比 Gamma(10, 1) 更尖、更窄的分佈），因為你的信念現在是基於 6 個小時的數據，而不僅僅是 1 個小時的猜測。</p>
-<div style="text-align: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://your-website-url.example.com/posts/2025-1112-conjugacy_prior/Gamma_60_6.png" class="img-fluid figure-img" width="400"></p>
-<figcaption>圖一： Gamma(10,1) 與 Gamma(60,6) 的比較</figcaption>
-</figure>
-</div>
-</div>
-<p>這就是 Gamma-Poisson 共軛家族的美妙之處：它提供了一個直觀且計算簡單的方法，讓我們不斷用新的「計數數據」來更新我們對「事件發生率」的信念。</p>
-<hr>
-</section>
-</section>
-<section id="共軛分佈三估計常態分佈的平均值與變異數-normal-inverse-gamma" class="level2">
-<h2 class="anchored" data-anchor-id="共軛分佈三估計常態分佈的平均值與變異數-normal-inverse-gamma">共軛分佈（三）：估計常態分佈的平均值與變異數 (Normal-Inverse-Gamma)</h2>
-<p>在前面的文章中，我們學會了如何：</p>
-<ol type="1">
-<li>用 <strong>Beta-Binomial</strong> 估計<strong>機率</strong> (0 到 1 之間)。</li>
-<li>用 <strong>Gamma-Poisson</strong> 估計<strong>頻率</strong> (大於 0 的計數)。</li>
-</ol>
-<p>現在，我們要來處理統計學中最常見的問題：估計一個<strong>平均值 (mean)</strong>。</p>
-<ul>
-<li>一群學生的<strong>平均身高</strong>是多少？</li>
-<li>一批產品的<strong>平均壽命</strong>是多久？</li>
-<li>某支股票的<strong>平均日報酬率</strong>是多少？</li>
-</ul>
-<p>這些測量值——身高、時間、報酬率——都是<strong>連續變數</strong>。而說到連續變數，統計學的王者，<strong>常態分佈 (Normal Distribution)</strong> <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BN%7D(%5Cmu,%20%5Csigma%5E2)">，就該登場了。</p>
-<p><strong>挑戰：兩個未知數</strong></p>
-<p>。但這裡有一個挑戰。不像 Binomial (只有 <img src="https://latex.codecogs.com/png.latex?p">) 或 Poisson (只有 <img src="https://latex.codecogs.com/png.latex?%5Clambda">) 只有一個參數，常態分佈 <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BN%7D(%5Cmu,%20%5Csigma%5E2)"> 描述了兩個我們都不知道的參數：</p>
-<ol type="1">
-<li>平均值 <img src="https://latex.codecogs.com/png.latex?%5Cmu">：我們主要想估計的目標。</li>
-<li>變異數 <img src="https://latex.codecogs.com/png.latex?%5Csigma%5E2">：數據的波動程度，我們通常也不知道。</li>
-</ol>
-<p>我們希望能建立一個貝氏模型，讓我們對 <img src="https://latex.codecogs.com/png.latex?%5Cmu"> 和 <img src="https://latex.codecogs.com/png.latex?%5Csigma%5E2"> 的「信念」在看到新數據 <img src="https://latex.codecogs.com/png.latex?D%20=%20%5C%7Bx_1,%20...,%20x_n%5C%7D"> 後，能自動更新。</p>
-<p><strong>暖身: 從最大概似估計 (MLE) 看起</strong></p>
-<p>在進入貝氏模型之前，讓我們先用傳統的「最大概似估計 (Maximum Likelihood Estimation, MLE)」來暖身。這能幫助我們理解 Likelihood Function 的長相。</p>
-<p>假設 <img src="https://latex.codecogs.com/png.latex?D%20=%20%5C%7Bx_1,%20...,%20x_n%5C%7D"> 來自 <img src="https://latex.codecogs.com/png.latex?%5Cmathcal%7BN%7D(%5Cmu,%20%5Csigma%5E2)">，Likelihood Function 為： <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cmathbb%7BP%7D(D%20%5Cmid%20%5Cmu,%20%5Csigma%5E2)%20&amp;=%20%5Cprod_%7Bi=1%7D%5En%20%5Cleft(%20%5Cfrac%7B1%7D%7B%5Csigma%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%5Cfrac%7B(x_i-%5Cmu)%5E2%7D%7B2%5Csigma%5E2%7D%7D%20%5Cright)%20%20%5C%5C%0A&amp;%5Cpropto%20%5Cfrac%7B1%7D%7B%5Csigma%5En%7D%20e%5E%7B-%5Cfrac%7B%5Csum_%7Bi=1%7D%5En%20(x_i-%5Cmu)%5E2%7D%7B2%5Csigma%5E2%7D%7D%0A%5Cend%7Balign%7D%0A"> 為了方便計算，我們取其負對數 (Negative Log-Likelihood): <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A-%20%5Cln(%5Cmathbb%7BP%7D(D%20%5Cmid%20%5Cmu,%20%5Csigma%5E2))%0A&amp;=%20%5Cfrac%7B1%7D%7B2%5Csigma%5E2%7D%5Csum_%7Bi=1%7D%5En%20(x_i-%5Cmu)%5E2%20+%20n%20%5Cln(%5Csigma)%20+%20%5Ctext%7Bconstant%7D%0A%5Cend%7Balign%7D%0A"> 這邊constant的意思是跟 <img src="https://latex.codecogs.com/png.latex?%5Cmu,%20%5Csigma"> 無關。</p>
-<p>用 maximal likelihood 的觀點，這個 <img src="https://latex.codecogs.com/png.latex?%5Cmu,%20%5Csigma"> 的極值發生在哪裡? 我們記等式左邊這個 log-likelihood 為 <img src="https://latex.codecogs.com/png.latex?f%20=%20-%20%5Cln(%5Cmathbb%7BP%7D(D%20%5Cmid%20%5Cmu,%20%5Csigma%5E2))">。令其偏微分各自為0。 <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20%5Cmu%7D%20&amp;=%20%20%5Cfrac%7B1%7D%7B%5Csigma%5E2%7D%5Csum_%7Bi=1%7D%5En%20(%5Cmu%20-%20x_i)%20=%200%20%20%5C%5C%0A%5Cfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20%5Csigma%7D%20&amp;=%20%20-%5Cfrac%7B1%7D%7B%5Csigma%5E3%7D%5Csum_%7Bi=1%7D%5En%20(x_i-%5Cmu)%5E2%20+%20%5Cfrac%7Bn%7D%7B%5Csigma%7D%20=%200%20%20%0A%5Cend%7Balign%7D%0A"> 解出來為 <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Chat%7B%5Cmu%7D%20&amp;=%20%5Cfrac%7B1%7D%7Bn%7D%5Csum_%7Bi=1%7D%5En%20x_i%20=%20%5Coverline%7Bx%7D%20%5C%5C%0A%5Chat%7B%5Csigma%7D%5E2%20&amp;=%20%5Cfrac%7B1%7D%7Bn%7D%5Csum_%7Bi=1%7D%5En%20(x_i-%5Coverline%7Bx%7D)%5E2%20%20%0A%5Cend%7Balign%7D%0A"> (可以驗證一下，二階導數矩陣正定，所以 <img src="https://latex.codecogs.com/png.latex?f"> 是取到最小值)</p>
-<blockquote class="blockquote">
-<p>題外話：為什麼是除以 <img src="https://latex.codecogs.com/png.latex?n"> 而不是 <img src="https://latex.codecogs.com/png.latex?n-1">？ 一般說的樣本標準差是「除以 <img src="https://latex.codecogs.com/png.latex?n-1">」這裡推導出來怎麼是除以 <img src="https://latex.codecogs.com/png.latex?n">? 難道推導錯誤了嗎? 沒有，若要最大化似然，確實應該要除以 <img src="https://latex.codecogs.com/png.latex?n">，而一般常用的除以 <img src="https://latex.codecogs.com/png.latex?n-1">，那是我們希望這個 <img src="https://latex.codecogs.com/png.latex?%5Csigma%5E2"> 是個無偏估計 (unbiased-estimation)。也就是說我們希望 <img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbb%7BE%7D%5B%5Ctilde%7B%5Csigma%7D%5E2%5D%20=%20%5Csigma%5E2%0A"> 把期望值的定義寫出來，也就是 <img src="https://latex.codecogs.com/png.latex?%0A%5Cint%20%5Ctilde%7B%5Csigma%7D%5E2%20%5Cmathbb%7BP%7D(D%20%5Cmid%20%5Cmu,%20%5Csigma%5E2)%20%20dx_1...dx_n%20=%20%5Csigma%5E2%0A"> 也就是一般的樣本標準差 <img src="https://latex.codecogs.com/png.latex?%5Ctilde%7B%5Csigma%7D%5E2%20=%20%5Cfrac%7B1%7D%7Bn-1%7D%20%5Csum_%7Bi=1%7D%5En%20(x_i-%5Coverline%7Bx%7D)%5E2">，是在所有無偏估計中，擁有最小variance的 (Why?)</p>
-</blockquote>
-<section id="貝式解法-normal-inverse-gamma-nig-模型" class="level3">
-<h3 class="anchored" data-anchor-id="貝式解法-normal-inverse-gamma-nig-模型">貝式解法: Normal-Inverse-Gamma (NIG) 模型</h3>
-<p>好了，拉回我們的正題：貝氏更新。我們要找一個共軛事前分佈 <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(%5Cmu,%20%5Csigma%5E2)">，使得它乘上 Likelihood <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(D%20%5Cmid%20%5Cmu,%20%5Csigma%5E2)"> 之後，得到的 Posterior <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(%5Cmu,%20%5Csigma%5E2%20%5Cmid%20D)"> 仍然和 Prior 具有相同的形式。這個神奇的 Prior 就是 Normal-Inverse-Gamma (NIG) 分佈。它由四個超參數 <img src="https://latex.codecogs.com/png.latex?(%5Cmu_0,%20%5Ckappa_0,%20%5Calpha_0,%20%5Cbeta_0)"> 定義，其結構如下：</p>
-<ol type="1">
-<li>對 <img src="https://latex.codecogs.com/png.latex?%5Csigma%5E2"> 的信念：我們假設 <img src="https://latex.codecogs.com/png.latex?%5Csigma%5E2"> 服從一個 Inverse-Gamma 分佈: <img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbb%7BP%7D(%5Csigma%5E2)%20%5Cpropto%20(%5Csigma%5E2)%5E%7B-%5Calpha_0-1%7De%5E%7B-%5Cfrac%7B%5Cbeta_0%7D%7B%5Csigma%5E2%7D%7D%0A"></li>
-<li>對 <img src="https://latex.codecogs.com/png.latex?%5Cmu"> 的信念 (給定 <img src="https://latex.codecogs.com/png.latex?%5Csigma%5E2">)：我們假設 <img src="https://latex.codecogs.com/png.latex?%5Cmu"> 服從一個常態分佈，但這個常態分佈的變異數取決於 <img src="https://latex.codecogs.com/png.latex?%5Csigma%5E2">： <img src="https://latex.codecogs.com/png.latex?%0A%5Cmathbb%7BP%7D(%5Cmu%20%5Cmid%20%5Csigma%5E2)%20%5Csim%20%5Cmathcal%7BN%7D(%5Cmu_0,%20%5Csigma%5E2/%5Ckappa_0)%0A%5Cpropto%20%5Cfrac%7B1%7D%7B%5Csigma%20/%5Csqrt%7B%5Ckappa_0%7D%20%7D%20e%5E%7B-%5Cfrac%7B(%5Cmu-%5Cmu_0)%5E2%7D%7B2%5Csigma%5E2%20/%20%5Ckappa_0%7D%7D%0A"></li>
-</ol>
-<p>這樣就描述了我們對 <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(%5Cmu,%20%5Csigma%5E2)"> 的 joint distribution， <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cmathbb%7BP%7D(%5Cmu,%20%5Csigma%5E2)%0A&amp;=%20%5Cmathbb%7BP%7D(%5Csigma%5E2)%20%5Ccdot%20%5Cmathbb%7BP%7D(%5Cmu%20%5Cmid%20%5Csigma%5E2)%20%5C%5C%0A&amp;%5Cpropto%20%20(%5Csigma%5E2)%5E%7B-%5Calpha_0-1%7De%5E%7B-%5Cfrac%7B%5Cbeta_0%7D%7B%5Csigma%5E2%7D%7D%20%5Cfrac%7B1%7D%7B%5Csigma%20/%5Csqrt%7B%5Ckappa_0%7D%20%7D%20e%5E%7B-%5Cfrac%7B(%5Cmu-%5Cmu_0)%5E2%7D%7B2%5Csigma%5E2%20/%20%5Ckappa_0%7D%7D%0A%5Cend%7Balign%7D%0A"> 一樣是取negative log-likelihood看比較清楚: <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A-%5Cln(%5Cmathbb%7BP%7D(%5Cmu,%20%5Csigma%5E2))%0A&amp;=%20%20%5Cfrac%7B%5Ckappa_0(%5Cmu-%5Cmu_0)%5E2%7D%7B2%5Csigma%5E2%7D%20+%20%5Cfrac%7B%5Cbeta_0%7D%7B%5Csigma%5E2%7D%20+%20(2%5Calpha_0%20+%203)%20%5Cln(%5Csigma)%20+%20%5Ctext%7Bconstant%7D%0A%5Cend%7Balign%7D%0A"></p>
-<p>精彩的來了，我們要算經過一筆資料 <img src="https://latex.codecogs.com/png.latex?D"> 更新後的事後分布是否也是一樣的形式呢? 而四個超參數 <img src="https://latex.codecogs.com/png.latex?(%5Calpha_0,%20%5Cbeta_0,%20%5Cmu_0,%20%5Ckappa_0)"> 會如何變動呢?</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A-%5Cln(%5Cmathbb%7BP%7D(%5Cmu,%20%5Csigma%5E2%20%5Cmid%20D))%0A&amp;=%20-%5Cln(%5Cmathbb%7BP%7D(D%20%5Cmid%20%5Cmu,%20%5Csigma%5E2))%20-%5Cln(%5Cmathbb%7BP%7D(%5Cmu,%20%5Csigma%5E2))%20+%20%5Ctext%7Bconstant%7D%20%5C%5C%0A&amp;=%20%20%5Cfrac%7B1%7D%7B2%5Csigma%5E2%7D%5Csum_%7Bi=1%7D%5En%20(x_i-%5Cmu)%5E2%20+%20n%20%5Cln(%5Csigma)%20%5C%5C%0A&amp;%5Cqquad%20+%20%5Cfrac%7B%5Ckappa_0(%5Cmu-%5Cmu_0)%5E2%7D%7B2%5Csigma%5E2%7D%20+%20%5Cfrac%7B%5Cbeta_0%7D%7B%5Csigma%5E2%7D%20+%20(2%5Calpha_0%20+%203)%20%5Cln(%5Csigma)%20+%20%5Ctext%7Bconstant%7D%20%5C%5C%0A&amp;=%20%5Cleft(%20%5Cfrac%7Bn+%5Ckappa_0%7D%7B2%5Csigma%5E2%7D%20%5Cright)%5Cmu%5E2%0A+%20%5Cleft(%20-%5Cfrac%7B(%5Csum_%7Bi=1%7D%5En%20x_i)%20+%20%5Ckappa_0%20%5Cmu_0%7D%7B%5Csigma%5E2%7D%20%5Cright)%5Cmu%20%5C%5C%0A&amp;%5Cqquad%20+%20%5Cfrac%7B(%5Csum_%7Bi=1%7D%5En%20x_i%5E2)%20+%20%5Ckappa_0%20%5Cmu_0%5E2%20+%202%5Cbeta_0%7D%7B2%5Csigma%5E2%7D%0A+%20(n+2%5Calpha_0+3)%5Cln(%5Csigma)%20+%20%5Ctext%7Bconstant%7D%0A%5Cend%7Balign%7D%0A"> 比較一下係數，可以依序解出 <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Ckappa_n%20&amp;=%20n%20+%20%5Ckappa_0%20%20%5C%5C%0A%5Cmu_n%20&amp;=%20%5Cfrac%7B(%5Csum_%7Bi=1%7D%5En%20x_i)%20+%20%5Ckappa_0%20%5Cmu_0%7D%7Bn+%5Ckappa_0%7D%20%20%5C%5C%0A%5Calpha_n%20&amp;=%20%5Calpha_0%20+%20%5Cfrac%7Bn%7D%7B2%7D%20%20%5C%5C%0A%5Cbeta_n%20&amp;=%20-%5Cleft(%20%5Cfrac%7Bn+%5Ckappa_0%7D%7B2%7D%20%5Cright)%5Cmu_n%5E2%0A+%20%5Cfrac%7B(%5Csum_%7Bi=1%7D%5En%20x_i%5E2)%20+%20%5Ckappa_0%20%5Cmu_0%5E2%20+%202%5Cbeta_0%7D%7B2%7D%20%5Cquad%5Ctext%7B(by%20completing%20the%20square)%7D%20%5C%5C%0A&amp;=%20-%20%5Cfrac%7B(%5Csum_%7Bi=1%7D%5En%20x_i%20+%20%5Ckappa_0%20%5Cmu_0)%5E2%7D%7B2(n+%5Ckappa_0)%7D%20+%20%5Cfrac%7B(%5Csum_%7Bi=1%7D%5En%20x_i%5E2)%20+%20%5Ckappa_0%20%5Cmu_0%5E2%20+%202%5Cbeta_0%7D%7B2%7D%0A%5Cend%7Balign%7D%0A"></p>
-</section>
-<section id="總結更新規則與直觀解釋" class="level3">
-<h3 class="anchored" data-anchor-id="總結更新規則與直觀解釋">總結：更新規則與直觀解釋</h3>
-<p>我們成功了！Posterior <img src="https://latex.codecogs.com/png.latex?%5Cmathbb%7BP%7D(%5Cmu,%20%5Csigma%5E2%20%5Cmid%20D)"> 確實保持了 Normal-Inverse-Gamma (NIG) 的形式，其超參數 <img src="https://latex.codecogs.com/png.latex?(%5Cmu_n,%20%5Ckappa_n,%20%5Calpha_n,%20%5Cbeta_n)"> 透過以下規則更新：</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">超參數</th>
-<th style="text-align: left;">事前 (Prior)</th>
-<th style="text-align: left;">事後 (Posterior) 更新規則</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><img src="https://latex.codecogs.com/png.latex?%5Ckappa_n"></td>
-<td style="text-align: left;"><img src="https://latex.codecogs.com/png.latex?%5Ckappa_0"></td>
-<td style="text-align: left;"><img src="https://latex.codecogs.com/png.latex?%5Ckappa_n%20=%20%5Ckappa_0%20+%20n"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><img src="https://latex.codecogs.com/png.latex?%5Cmu_n"></td>
-<td style="text-align: left;"><img src="https://latex.codecogs.com/png.latex?%5Cmu_0"></td>
-<td style="text-align: left;"><img src="https://latex.codecogs.com/png.latex?%5Cmu_n%20=%20%5Cfrac%7B%5Ckappa_0%20%5Cmu_0%20+%20n%5Coverline%7Bx%7D%7D%7B%5Ckappa_0%20+%20n%7D"> (其中 <img src="https://latex.codecogs.com/png.latex?%5Coverline%7Bx%7D%20=%20%5Cfrac%7B1%7D%7Bn%7D%5Csum%20x_i">)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><img src="https://latex.codecogs.com/png.latex?%5Calpha_n"></td>
-<td style="text-align: left;"><img src="https://latex.codecogs.com/png.latex?%5Calpha_0"></td>
-<td style="text-align: left;"><img src="https://latex.codecogs.com/png.latex?%5Calpha_n%20=%20%5Calpha_0%20+%20%5Cfrac%7Bn%7D%7B2%7D"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><img src="https://latex.codecogs.com/png.latex?%5Cbeta_n"></td>
-<td style="text-align: left;"><img src="https://latex.codecogs.com/png.latex?%5Cbeta_0"></td>
-<td style="text-align: left;"><img src="https://latex.codecogs.com/png.latex?%5Cbeta_n%20=%20%5Cbeta_0%20+%20%5Cfrac%7B1%7D%7B2%7D%20%5Csum_%7Bi=1%7D%5En%20(x_i%20-%20%5Coverline%7Bx%7D)%5E2%20+%20%5Cfrac%7Bn%5Ckappa_0%7D%7B2(n+%5Ckappa_0)%7D(%5Coverline%7Bx%7D%20-%20%5Cmu_0)%5E2"></td>
-</tr>
-</tbody>
-</table>
-<p><strong>這代表什麼？</strong>，讓我們來直觀地解讀這些更新規則：</p>
-<ul>
-<li><p><strong><img src="https://latex.codecogs.com/png.latex?%5Ckappa_n%20=%20%5Ckappa_0%20+%20n"></strong>： 我們對 <img src="https://latex.codecogs.com/png.latex?%5Cmu"> 的信心（<img src="https://latex.codecogs.com/png.latex?%5Ckappa">）等於「先前的信心」加上「新數據的點數」。這非常合理。</p></li>
-<li><p><strong><img src="https://latex.codecogs.com/png.latex?%5Cmu_n%20=%20%5Cfrac%7B%5Ckappa_0%20%5Cmu_0%20+%20n%5Coverline%7Bx%7D%7D%7B%5Ckappa_0%20+%20n%7D"></strong>： <strong>這是最漂亮的一條規則！</strong> 我們更新後的平均值 <img src="https://latex.codecogs.com/png.latex?%5Cmu_n">，是「先前平均值 <img src="https://latex.codecogs.com/png.latex?%5Cmu_0">」和「數據平均值 <img src="https://latex.codecogs.com/png.latex?%5Coverline%7Bx%7D">」的<strong>加權平均</strong>。 權重分別是 <img src="https://latex.codecogs.com/png.latex?%5Ckappa_0">（先前的信心）和 <img src="https://latex.codecogs.com/png.latex?n">（數據的數量）。如果 <img src="https://latex.codecogs.com/png.latex?%5Ckappa_0"> 很小（不確定的 prior），<img src="https://latex.codecogs.com/png.latex?%5Cmu_n"> 就會很接近 <img src="https://latex.codecogs.com/png.latex?%5Coverline%7Bx%7D">。如果 <img src="https://latex.codecogs.com/png.latex?%5Ckappa_0"> 很大（強烈的 prior），<img src="https://latex.codecogs.com/png.latex?%5Cmu_n"> 就會很接近 <img src="https://latex.codecogs.com/png.latex?%5Cmu_0">。</p></li>
-<li><p><strong><img src="https://latex.codecogs.com/png.latex?%5Calpha_n%20=%20%5Calpha_0%20+%20%5Cfrac%7Bn%7D%7B2%7D"></strong>： 我們對 <img src="https://latex.codecogs.com/png.latex?%5Csigma%5E2"> 的信念（<img src="https://latex.codecogs.com/png.latex?%5Calpha">）也隨著數據點 <img src="https://latex.codecogs.com/png.latex?n"> 而增加。</p></li>
-<li><p><strong><img src="https://latex.codecogs.com/png.latex?%5Cbeta_n%20=%20%5Cbeta_0%20+%20%5Cdots"></strong>： 我們對 <img src="https://latex.codecogs.com/png.latex?%5Csigma%5E2"> 的信念（<img src="https://latex.codecogs.com/png.latex?%5Cbeta">）更新，等於「先前的 <img src="https://latex.codecogs.com/png.latex?%5Cbeta_0">」加上「數據內部的變異 <img src="https://latex.codecogs.com/png.latex?%5Csum%20(x_i%20-%20%5Coverline%7Bx%7D)%5E2">」再加上「數據平均值與先前平均值之間的差異 <img src="https://latex.codecogs.com/png.latex?(%5Coverline%7Bx%7D%20-%20%5Cmu_0)%5E2">」。這也完全符合直覺。</p></li>
-</ul>
-<p>至此，我們完成推導了常態分佈的共軛模型！它讓我們能夠在 <img src="https://latex.codecogs.com/png.latex?%5Cmu"> 和 <img src="https://latex.codecogs.com/png.latex?%5Csigma%5E2"> 都未知的情況下，優雅地更新我們的信念。</p>
-
-
-</section>
-</section>
-
- ]]></description>
-  <category>statistic</category>
-  <guid>https://your-website-url.example.com/posts/2025-1112-conjugacy_prior/index.html</guid>
-  <pubDate>Tue, 11 Nov 2025 16:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
